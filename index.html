@@ -16,7 +16,7 @@
                 <li><a href="about.html">About Me</a></li>
                 <li><a href="contactus.html">Contact</a></li>
                 <li><a href="Services.html">Services</a></li>
-                <li><a href="Portforlio.html">Portfolio</a></li>
+                <li><a href="Portfolio.html">Portfolio</a></li>
             </ul>
         </div>
 
@@ -26,7 +26,7 @@
                 <div class="social-media">
                     <a href="https://www.facebook.com/theekshana.moremada.3?mibextid=ZbWKwL" target="_blank" class="social-icon facebook"><i class='bx bxl-facebook'></i></a>
                     <a href="https://github.com/Theek-Shana" target="_blank" class="social-icon Github"><i class='bx bxl-github'></i></a>
-                    <a href="www.linkedin.com/in/theekshana-vidushan-727689293" target="_blank" class="social-icon linkedin"><i class='bx bxl-linkedin'></i></a>
+                    <a href="https://www.linkedin.com/in/theekshana-vidushan-727689293" target="_blank" class="social-icon linkedin"><i class='bx bxl-linkedin'></i></a>
                     <a href="https://www.instagram.com/theek_shana_7683?igsh=cDZ4MnFidW5sYTdt" target="_blank" class="social-icon instagram"><i class='bx bxl-instagram'></i></a>
                 </div>
             </div>
@@ -39,11 +39,88 @@
         </div>
     </div>
 
-     <!-- WhatsApp Icon -->
-     <a href="https://wa.me/+94717970580" target="_blank" class="whatsapp-icon">
+    <a href="https://wa.me/+94717970580" target="_blank" class="whatsapp-icon">
         <i class='bx bxl-whatsapp'></i> Chat with me
     </a>
-     </a>
 
+    <style>
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .content-container {
+                flex-direction: column;
+                text-align: center;
+                padding: 20px;
+            }
+
+            .side-photo img {
+                height: 300px;
+                left: 0;
+                top: 0;
+                margin-bottom: 20px;
+            }
+
+            .navbar ul {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .text-content {
+                margin: 0;
+            }
+
+            .whatsapp-icon {
+                bottom: 20px;
+                right: 20px;
+                padding: 10px 15px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                align-items: center;
+                padding: 20px 0;
+            }
+
+            .navbar ul li {
+                margin: 5px 0;
+            }
+
+            .text-content h1 {
+                font-size: 32px;
+            }
+
+            .text-content p {
+                font-size: 16px;
+            }
+
+            .side-photo img {
+                height: 250px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .navbar ul li a {
+                font-size: 14px;
+            }
+
+            .text-content h1 {
+                font-size: 24px;
+            }
+
+            .text-content p {
+                font-size: 12px;
+            }
+
+            .whatsapp-icon {
+                font-size: 14px;
+                padding: 8px 12px;
+            }
+
+            .side-photo img {
+                height: 200px;
+            }
+        }
+    </style>
 </body>
 </html>
