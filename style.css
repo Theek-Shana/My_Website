@@ -1,0 +1,237 @@
+/* Reset and general styling */
+* {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    box-sizing: border-box;
+}
+
+.banner {
+    width: 100%;
+    height: 100vh;
+    background-color: black;
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+}
+
+.navbar {
+    width: 95%;
+    margin: auto;
+    padding: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    width: 100px;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar ul li {
+    margin: 0 10px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.navbar ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    position: relative;
+    padding: 15px;
+    padding-bottom: 5px;
+}
+
+.navbar ul li a:hover {
+    color: #1578c9;
+}
+
+.navbar ul li::after {
+    content: '';
+    height: 3px;
+    width: 0;
+    background: #009688;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    transition: width 0.5s;
+}
+
+.navbar ul li:hover::after {
+    width: 100%;
+}
+
+/* Flex container for image and text */
+.content-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 50px;
+    height: calc(100% - 150px);
+}
+
+.side-photo {
+    position: relative; /* Ensure icons are positioned over the image */
+}
+
+.side-photo img {
+    height: 500px;
+    width: auto;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    filter: brightness(80%);
+    position: relative;
+    top: -40px;
+    left: 250px;
+}
+
+.social-media {
+    position: absolute;
+    top: 20%;
+    left: -40px;
+    display: flex;
+    flex-direction: column;
+}
+
+.social-icon {
+    width: 40px;
+    height: 40px;
+    margin: 10px 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+    transform: scale(1.1);
+}
+
+.social-icon.facebook {
+    background-color: #3b5998;
+}
+
+.social-icon.Github {
+    background-color: #7a7a7a;
+}
+
+.social-icon.linkedin {
+    background-color: #0e76a8;
+}
+
+.social-icon.instagram {
+    background-color: #bc2a8d;
+}
+
+/* Text content */
+.text-content {
+    margin-right: 150px;
+    margin-bottom: 150px;
+    max-width: 750px;
+    color: white;
+}
+
+.text-content h1 {
+    font-size: 58px;
+    margin-bottom: 20px;
+    color: rgb(28, 122, 209);
+}
+
+.text-content p {
+    padding-top: 30px;
+    font-size: 20px;
+    line-height: 1.8;
+}
+
+.ab {
+    height: 100px;
+    width: 100%;
+    background-color: #009688;
+}
+
+/* WhatsApp icon at the bottom right */
+.whatsapp-icon {
+    position: fixed;
+    bottom: 80px;  /* Adjust the position higher from the bottom */
+    right: 40px;   /* Adjust the position left from the right side */
+    background-color: #25d366;
+    color: white;
+    font-size: 20px;
+    border-radius: 25px;
+    padding: 12px 20px;  /* Adjust padding for better spacing */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.whatsapp-icon i {
+    font-size: 24px;  /* Adjust icon size */
+    margin-right: 10px;  /* Space between the icon and text */
+}
+
+.whatsapp-icon:hover {
+    background-color: #128C7E;
+}
+
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .navbar ul {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .side-photo img {
+        top: 0;
+        left: 0;
+    }
+
+    .text-content {
+        margin: 10px 0;
+    }
+
+    .text-content h1 {
+        font-size: 28px;
+    }
+
+    .text-content p {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar {
+        padding: 10px;
+    }
+
+    .text-content h1 {
+        font-size: 24px;
+    }
+
+    .text-content p {
+        font-size: 12px;
+    }
+}

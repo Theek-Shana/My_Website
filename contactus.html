@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us - FitZone Fitness Center</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  
+  <style>
+    /* General Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      background-image: url('BG.PNG');
+      background-color: black;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .navbar {
+    width: 90%;
+    margin: auto;
+    padding: 35px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    width: 100px;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar ul li {
+    margin: 0 10px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.navbar ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    margin-right: 20px;
+    font-weight: 300;
+    position: relative;
+    padding-bottom: 5px;
+}
+
+.navbar ul li a:hover {
+    color: #ffbc05;
+}
+
+.navbar ul li::after {
+    content: '';
+    height: 3px;
+    width: 0;
+    background: #049dda;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    transition: width 0.5s;
+}
+
+.navbar ul li:hover::after {
+    width: 100%;
+}
+
+    /* Contact Container */
+    .contact-container {
+      background-color: rgba(255, 255, 255, 0.95);
+      padding: 40px;
+      width: 400px;
+      border-radius: 12px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+      text-align: center;
+    }
+
+    h2 {
+      margin-bottom: 10px;
+      color: #049dda;
+    }
+
+    p {
+      margin-bottom: 20px;
+      color: #555;
+    }
+
+    input,
+    textarea,
+    button {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+
+    input:focus,
+    textarea:focus {
+      outline: none;
+      border-color: #049dda;
+      box-shadow: 0 0 5px rgba(255, 87, 51, 0.5);
+    }
+
+    button {
+      background-color: #049dda;
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background-color: #049dda;
+    }
+
+    /* FAQ Section */
+    .faq-container {
+      margin-top: 20px;
+    }
+
+    .faq-question {
+      background-color: #f4f4f4;
+      padding: 12px;
+      margin: 8px 0;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+      text-align: left;
+    }
+
+    .faq-question:hover {
+      background-color: #ddd;
+    }
+
+    .reply-message {
+      margin-top: 15px;
+      padding: 10px;
+      background-color: #dff0d8;
+      color: #3c763d;
+      border-radius: 8px;
+      display: none;
+      text-align: center;
+    }
+    .success-message {
+            color: green;
+            display: none; /* Hide by default */
+            margin: 10px 0;
+        }
+        .error-message {
+            color: red;
+            display: none; /* Hide by default */
+            margin: 10px 0;
+          }
+
+    /* Back Button */
+    .back-btn {
+      margin-top: 20px;
+      padding: 12px;
+      background-color: #049dda;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      width: 100%;
+    }
+
+    .back-btn:hover {
+      background-color: #2853e1;
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 600px) {
+      .contact-container {
+        width: 90%;
+      }
+
+      .navbar {
+        flex-direction: column;
+        align-items: flex-end;
+        padding: 0 10px;
+      }
+    }
+
+   
+  </style>
+
+  <script>
+    const replies = [
+      "Thank you for your interest! I'll get back to you as soon as possible.",
+    "Your message means a lot! I'll respond within 24 hours.",
+    "Thanks for reaching out! I'll reply shortly.",
+    "I appreciate your message! Expect a response soon."
+    ];
+
+    const faqReplies = {
+      "What are your hobbies?": "I enjoy graphic designing, gaming, and exploring new technologies.",
+    "What is your professional background?": "I'm a graphic designer with experience in multimedia design and software development.",
+    "What are your future goals?": "My goal is to excel in software engineering, build innovative projects, and Face To new Challenges.",
+    "Where are you studying?": "I’m pursuing a Software Engineering degree at ICBT Campus.",
+    "What inspires you?": "I’m inspired by creative challenges, technology, and the drive to achieve personal and professional success."
+ };
+
+    function handleFormSubmit(event) {
+      event.preventDefault();
+      const randomReply = replies[Math.floor(Math.random() * replies.length)];
+      const replyMessageDiv = document.querySelector('.reply-message');
+      replyMessageDiv.textContent = randomReply;
+      replyMessageDiv.style.display = 'block';
+    }
+
+    function handleFaqClick(question) {
+      const replyMessageDiv = document.querySelector('.reply-message');
+      replyMessageDiv.textContent = faqReplies[question];
+      replyMessageDiv.style.display = 'block';
+    }
+  </script>
+</head>
+
+<body>
+  <div class="navbar">
+    <img src="logo3.png" class="logo" alt="FitZone Logo">
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Me</a></li>
+        <li><a href="contactus.html">Contact</a></li>
+        <li><a href="review.php">Services</a></li>
+        <li><a href="news_feed.php">Portfolio</a></li>
+    
+    </ul>
+</div>
+
+
+  <div class="contact-container">
+    <h2>Contact Us</h2>
+    <p>I'M here to help! Send us a message or explore our FAQs below.</p>
+    
+
+    <form action="https://formsubmit.co/el/7f2e140167513aac46786dd81269c370" method="POST" >
+      <input type="text" id="name" name="full_name" placeholder="Full Name" required>
+      <input type="email" id="email" name="email" placeholder="Email Address" required>
+      <textarea id="message" name="message" rows="4" placeholder="Type your message" required></textarea>
+      <button type="submit">Send Message</button>
+      <div class="success-message"></div>
+    </form>
+
+    <div class="faq-container">
+      <h3>FAQs</h3>
+     
+      <div class="faq-question" onclick="handleFaqClick('What is your professional background?')">
+        What is your professional background?
+      </div>
+      <div class="faq-question" onclick="handleFaqClick('What are your future goals?')">
+        What are your future goals?
+      </div>
+      <div class="faq-question" onclick="handleFaqClick('Where are you studying?')">
+        Where are you studying?
+      </div>
+      <div class="faq-question" onclick="handleFaqClick('What inspires you?')">
+        What inspires you?
+      </div>
+    </div>
+    
+
+    <div class="reply-message"></div>
+    <button class="back-btn" onclick="window.location.href='index.html'">Back</button>
+  </div>
+
+
+</body>
+
+</html>

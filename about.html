@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me</title>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 0 20px;
+        }
+
+        /* Banner Section */
+        .banner {
+            width: 100%;
+            height: 150px;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url("ww.jpg") no-repeat center center/cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            position: relative;
+        }
+
+        .banner h1 {
+            font-size: 48px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+        }
+/* Navbar Section */
+.navbar {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 50px;
+    z-index: 10; /* Ensures the navbar stays above other elements */
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar ul li {
+    margin: 0 15px;
+    position: relative; /* Required for ::after hover effect */
+}
+
+.navbar ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    padding-bottom: 5px;
+    position: relative;
+}
+
+.navbar ul li a:hover {
+    color: #00bcd4;
+}
+
+.navbar ul li::after {
+    content: '';
+    height: 3px;
+    width: 0;
+    background: #009688;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    transition: width 0.3s ease-in-out; /* Smoother transition */
+}
+
+.navbar ul li:hover::after {
+    width: 100%;
+}
+
+.logo {
+    width: 120px;
+}
+
+        /* About Section */
+        .about-section {
+            margin: 50px auto;
+            padding: 50px;
+            background-color: #1e1e1e;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            max-width: 1200px;
+        }
+
+        .about-section h2 {
+            font-size: 36px;
+            color: #00bcd4;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .about-section p {
+            font-size: 18px;
+            margin-bottom: 20px;
+            line-height: 1.8;
+            color: #dcdcdc;
+            text-align: justify;
+        }
+
+        /* Skills Section */
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .skill-card {
+            flex: 1 1 calc(33.33% - 20px);
+            background: #2a2a2a;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 300px;
+        }
+
+        .skill-card h3 {
+            color: #00bcd4;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .skill-card p {
+            font-size: 16px;
+            color: #b0b0b0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .banner h1 {
+                font-size: 36px;
+            }
+
+            .navbar ul {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .skills {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .skill-card {
+                flex: 1 1 100%;
+            }
+
+            .about-section {
+                margin: 0 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .navbar {
+                padding: 10px;
+            }
+
+            .about-section h2 {
+                font-size: 28px;
+            }
+
+            .about-section p {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Banner Section -->
+    <div class="banner">
+        <div class="navbar">
+            <img src="logo3.png" class="logo" alt="Logo">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Me</a></li>
+                <li><a href="contactus.html">Contact</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Portfolio</a></li>
+            </ul>
+        </div>
+        <h1>About Me</h1>
+    </div>
+
+    <!-- About Section -->
+    <section class="about-section">
+        <h2>Who I Am</h2>
+        <p>
+            Hello! I'm Theekshana Vidushan, a passionate Software Engineering student with a commitment to building efficient, scalable, and impactful software solutions. My focus is on solving complex problems, designing robust architectures, and ensuring that every application I create meets the highest standards of quality and performance.
+        </p>
+        <p>
+            Hello! I'm Theekshana Vidushan, a passionate Software Engineering student at ICBT Campus (Cardiff Metropolitan University), where I am currently advancing my knowledge and skills in computer science and software development. My journey has been focused on becoming a problem-solver who designs efficient, scalable, and impactful software solutions.
+
+            I specialize in building robust software architectures that ensure the applications I create are high-performing, reliable, and user-friendly. Throughout my academic career, I have immersed myself in the study of algorithms, data structures, and software engineering principles, while also embracing the challenges of real-world software development.
+            
+            Alongside my primary focus on software engineering, I have developed a deep interest in web development. With a solid programming foundation, I design responsive and intuitive web applications that meet the needs of users while aligning with the latest industry standards. This includes both the front-end and back-end development, ensuring a seamless user experience.
+            
+            In addition to my studies, I have a diploma in Graphic Design from SLIIT Campus, which has equipped me with the skills to create visually appealing and functional digital experiences. This background allows me to bring a creative touch to every project, ensuring not only technical efficiency but also aesthetic and user-friendly interfaces.
+            
+            As a lifelong learner, I'm always striving to expand my skill set and stay current with the latest trends in the tech industry. I believe that combining technical expertise with creativity is key to delivering innovative solutions.
+        </p>
+        <h2>Core Skills</h2>
+        <div class="skills">
+            <div class="skill-card">
+                <h3>Software Development</h3>
+                <p>Designing, coding, and testing software solutions to address real-world challenges using tools like Python, Java, and C++.</p>
+            </div>
+            <div class="skill-card">
+                <h3>Web Development</h3>
+                <p>Creating responsive, accessible websites using HTML, CSS, JavaScript, and backend technologies like PHP and MySQL.</p>
+            </div>
+            <div class="skill-card">
+                <h3>Graphic and Multimedia Designing</h3>
+<p>Crafting visually stunning designs and multimedia content by utilizing advanced tools and techniques. Solving complex creative challenges through innovative solutions and efficient workflows.</p>
+</div>
+
+        </div>
+        <h2>My Journey</h2>
+        <p>
+            Over the years, I've grown my expertise in software engineering by working on diverse projects and constantly challenging myself to learn more. My goal is to merge technical skills with creativity to build products that not only work seamlessly but also leave a lasting impact on users.
+        </p>
+        <h2>Interests</h2>
+        <p>
+            Apart from coding, I enjoy gaming, exploring new technologies, and finding innovative solutions to complex challenges. I'm driven by a desire to grow and make a meaningful contribution to the world of technology.
+        </p>
+    </section>
+</body>
+</html>
