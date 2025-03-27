@@ -6,6 +6,7 @@
     <title>Home Page</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
 </head>
 <body>
     <div class="banner">
@@ -16,7 +17,7 @@
                 <li><a href="about.html">About Me</a></li>
                 <li><a href="contactus.html">Contact</a></li>
                 <li><a href="Services.html">Services</a></li>
-                <li><a href="Portfolio.html">Portfolio</a></li>
+                <li><a href="Portforlio.html">Portfolio</a></li>
             </ul>
         </div>
 
@@ -30,8 +31,10 @@
                     <a href="https://www.instagram.com/theek_shana_7683?igsh=cDZ4MnFidW5sYTdt" target="_blank" class="social-icon instagram"><i class='bx bxl-instagram'></i></a>
                 </div>
             </div>
+
             <div class="text-content">
                 <h1>Hello, <br> I'm Theekshana Vidushan</h1>
+                <h2 class="dynamic-text"><span id="typed-text"></span></h2>
                 <p>
                     "Hi, I’m Theekshana – a Software Engineering student passionate about creating innovative solutions. I specialize in software development, building efficient and scalable applications, while also focusing on web development to craft responsive, user-friendly websites. My background as a graphic designer allows me to create visually appealing and functional digital experiences. I'm committed to learning and evolving in my field, blending technical skills with creativity to deliver impactful solutions. Let’s collaborate to build something unique and innovative!"
                 </p>
@@ -43,84 +46,238 @@
         <i class='bx bxl-whatsapp'></i> Chat with me
     </a>
 
-    <style>
-        /* Responsive Design */
-        @media (max-width: 1024px) {
-            .content-container {
-                flex-direction: column;
-                text-align: center;
-                padding: 20px;
-            }
+    <script src="script.js"></script>
 
-            .side-photo img {
-                height: 300px;
-                left: 0;
-                top: 0;
-                margin-bottom: 20px;
-            }
+</body>
+</html>
 
-            .navbar ul {
-                flex-direction: column;
-                gap: 15px;
-            }
 
-            .text-content {
-                margin: 0;
-            }
 
-            .whatsapp-icon {
-                bottom: 20px;
-                right: 20px;
-                padding: 10px 15px;
-            }
-        }
 
-        @media (max-width: 768px) {
-            .navbar {
-                flex-direction: column;
-                align-items: center;
-                padding: 20px 0;
-            }
 
-            .navbar ul li {
-                margin: 5px 0;
-            }
+<style>
+      @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap');
 
-            .text-content h1 {
-                font-size: 32px;
-            }
+body {
+    background: #0d0d0d;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    overflow-x: hidden;
+}
 
-            .text-content p {
-                font-size: 16px;
-            }
+/* Navbar Styles */
+.navbar ul {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+}
 
-            .side-photo img {
-                height: 250px;
-            }
-        }
+.navbar ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    transition: 0.3s;
+}
 
-        @media (max-width: 480px) {
-            .navbar ul li a {
-                font-size: 14px;
-            }
+.navbar ul li a:hover {
+    color: #0ff;
+}
 
-            .text-content h1 {
-                font-size: 24px;
-            }
+/* Typing effect text */
+.dynamic-text {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 0 0 10px #0ff, 0 0 20px #0ff, 0 0 40px #00f;
+    transition: all 0.3s ease-in-out;
+    animation: neonGlow 1.5s infinite alternate;
+}
 
-            .text-content p {
-                font-size: 12px;
-            }
+/* Neon Glow Animation */
+@keyframes neonGlow {
+    0% {
+        text-shadow: 0 0 5px #0ff, 0 0 10px #0ff, 0 0 20px #0ff, 0 0 40px #00f;
+    }
+    100% {
+        text-shadow: 0 0 10px #0ff, 0 0 20px #0ff, 0 0 30px #0ff, 0 0 50px #00f;
+    }
+}
 
-            .whatsapp-icon {
-                font-size: 14px;
-                padding: 8px 12px;
-            }
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .content-container {
+        flex-direction: column;
+        text-align: center;
+        padding: 20px;
+    }
 
-            .side-photo img {
-                height: 200px;
-            }
-        }
+    .navbar ul {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .whatsapp-icon {
+        bottom: 20px;
+        right: 20px;
+        padding: 10px 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    .text-content h1 {
+        font-size: 32px;
+    }
+
+    .text-content p {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .text-content h1 {
+        font-size: 24px;
+    }
+
+    .text-content p {
+        font-size: 12px;
+    }
+
+    .whatsapp-icon {
+        font-size: 14px;
+        padding: 8px 12px;
+    }
+}
+
+/* Flex container for image and text */
+.content-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 50px;
+    height: calc(100% - 150px);
+    flex-wrap: wrap;
+}
+
+.side-photo {
+    position: relative; /* Ensure icons are positioned over the image */
+}
+
+.side-photo img {
+    height: 500px;
+    width: auto;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    filter: brightness(80%);
+    position: relative;
+    top: -40px;
+    left: 250px;
+}
+
+.social-media {
+    position: absolute;
+    top: 20%;
+    left: -40px;
+    display: flex;
+    flex-direction: column;
+}
+
+.social-icon {
+    width: 40px;
+    height: 40px;
+    margin: 10px 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+    transform: scale(1.1);
+}
+
+.social-icon.facebook {
+    background-color: #3b5998;
+}
+
+.social-icon.Github {
+    background-color: #7a7a7a;
+}
+
+.social-icon.linkedin {
+    background-color: #0e76a8;
+}
+
+.social-icon.instagram {
+    background-color: #bc2a8d;
+}
+
+/* Text content */
+.text-content {
+    margin-right: 150px;
+    margin-bottom: 150px;
+    max-width: 750px;
+    color: white;
+}
+
+.text-content h1 {
+    font-size: 58px;
+    margin-bottom: 20px;
+    color: rgb(28, 122, 209);
+}
+
+.text-content p {
+    padding-top: 30px;
+    font-size: 20px;
+    line-height: 1.8;
+}
+
+.ab {
+    height: 100px;
+    width: 100%;
+    background-color: #009688;
+}
+
+/* WhatsApp icon at the bottom right */
+.whatsapp-icon {
+    position: fixed;
+    bottom: 80px;  /* Adjust the position higher from the bottom */
+    right: 40px;   /* Adjust the position left from the right side */
+    background-color: #25d366;
+    color: white;
+    font-size: 20px;
+    border-radius: 25px;
+    padding: 12px 20px;  /* Adjust padding for better spacing */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.whatsapp-icon i {
+    font-size: 24px;  /* Adjust icon size */
+    margin-right: 10px;  /* Space between the icon and text */
+}
+
+.whatsapp-icon:hover {
+    background-color: #128C7E;
+}
+
+
     </style>
 </body>
+
+
 </html>
