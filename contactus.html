@@ -248,47 +248,47 @@
         <li><a href="index.html">Home</a></li>
         <li><a href="about.html">About Me</a></li>
         <li><a href="contactus.html">Contact</a></li>
-        <li><a href="review.php">Services</a></li>
-        <li><a href="news_feed.php">Portfolio</a></li>
+        <li><a href="Services.html">Services</a></li>
+        <li><a href="Portforlio.html">Portfolio</a></li>
     
     </ul>
 </div>
 
 
-  <div class="contact-container">
+ <div class="contact-container">
     <h2>Contact Us</h2>
     <p>I'M here to help! Send us a message or explore our FAQs below.</p>
     
-
-    <form action="https://formsubmit.co/el/7f2e140167513aac46786dd81269c370" method="POST" >
-      <input type="text" id="name" name="full_name" placeholder="Full Name" required>
-      <input type="email" id="email" name="email" placeholder="Email Address" required>
-      <textarea id="message" name="message" rows="4" placeholder="Type your message" required></textarea>
-      <button type="submit">Send Message</button>
-      <div class="success-message"></div>
+    <form action="https://formsubmit.co/mahesh190290390@gmail.com" method="POST" class="contact-form">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" value="thank-you.html"> <!-- Redirect after submission -->
+        <input type="text" name="full_name" placeholder="Full Name" required>
+        <input type="email" name="email" placeholder="Email Address" required>
+        <textarea name="message" placeholder="Type your message" required></textarea>
+        <button type="submit">Send Message</button>
     </form>
-
+    
     <div class="faq-container">
-      <h3>FAQs</h3>
-     
-      <div class="faq-question" onclick="handleFaqClick('What is your professional background?')">
-        What is your professional background?
-      </div>
-      <div class="faq-question" onclick="handleFaqClick('What are your future goals?')">
-        What are your future goals?
-      </div>
-      <div class="faq-question" onclick="handleFaqClick('Where are you studying?')">
-        Where are you studying?
-      </div>
-      <div class="faq-question" onclick="handleFaqClick('What inspires you?')">
-        What inspires you?
-      </div>
+        <h3>FAQs</h3>
+        
+        <div class="faq-question" onclick="handleFaqClick('What is your professional background?')">
+            What is your professional background?
+        </div>
+        <div class="faq-question" onclick="handleFaqClick('What are your future goals?')">
+            What are your future goals?
+        </div>
+        <div class="faq-question" onclick="handleFaqClick('Where are you studying?')">
+            Where are you studying?
+        </div>
+        <div class="faq-question" onclick="handleFaqClick('What inspires you?')">
+            What inspires you?
+        </div>
     </div>
     
-
     <div class="reply-message"></div>
     <button class="back-btn" onclick="window.location.href='index.html'">Back</button>
-  </div>
+</div>
+
 
 
 </body>
