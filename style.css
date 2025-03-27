@@ -22,6 +22,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 .logo {
@@ -76,6 +77,7 @@
     justify-content: space-between;
     padding: 50px;
     height: calc(100% - 150px);
+    flex-wrap: wrap;
 }
 
 .side-photo {
@@ -190,8 +192,6 @@
     background-color: #128C7E;
 }
 
-
-
 /* Responsive Design */
 @media (max-width: 768px) {
     .navbar {
@@ -204,21 +204,30 @@
         text-align: center;
     }
 
+    .content-container {
+        flex-direction: column;
+        text-align: center;
+        padding: 20px;
+    }
+
     .side-photo img {
         top: 0;
         left: 0;
+        height: 350px;
     }
 
     .text-content {
         margin: 10px 0;
+        max-width: 100%;
+        text-align: center;
     }
 
     .text-content h1 {
-        font-size: 28px;
+        font-size: 32px;
     }
 
     .text-content p {
-        font-size: 14px;
+        font-size: 16px;
     }
 }
 
@@ -232,6 +241,17 @@
     }
 
     .text-content p {
-        font-size: 12px;
+        font-size: 14px;
+    }
+
+    .side-photo img {
+        height: 250px;
+    }
+
+    .whatsapp-icon {
+        bottom: 20px;
+        right: 20px;
+        padding: 10px 15px;
+        font-size: 16px;
     }
 }
