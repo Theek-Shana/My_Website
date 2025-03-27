@@ -4,68 +4,368 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Portfolio</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
     <style>
+      
+.navbar {
+    width: 95%;
+    margin: auto;
+    padding: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.logo {
+    width: 100px;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar ul li {
+    margin: 0 10px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.navbar ul li a {
+    text-decoration: none;
+    color: rgb(5, 5, 5);
+    font-size: 18px;
+    position: relative;
+    padding: 15px;
+    padding-bottom: 5px;
+}
+
+.navbar ul li a:hover {
+    color: #1578c9;
+}
+
+.navbar ul li::after {
+    content: '';
+    height: 3px;
+    width: 0;
+    background: #009688;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    transition: width 0.5s;
+}
+
+.navbar ul li:hover::after {
+    width: 100%;
+}
+
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            background-color: #eeeeee;
+            color: #333;
+            line-height: 1.6;
         }
+
+        /* Header Styles */
         .header {
             background-color: #333;
             color: #fff;
-            padding: 1rem;
+            padding: 1.0rem;
             text-align: center;
         }
+
+        .header h1 {
+            font-size: 3rem;
+        }
+
+        /* Container Styles */
         .container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
             padding: 2rem;
+            justify-content: center;
         }
-        .project {
-            background-color: #fff;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            margin: 1rem;
-            padding: 1rem;
-            width: 300px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            transition: transform 0.2s;
+
+        /* Card Styles */
+        .card {
+            perspective: 1000px;
+            cursor: pointer;
         }
-        .project:hover {
-            transform: scale(1.05);
+
+        .project-card {
+            width: 100%;
+            height: 400px;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.6s ease;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         }
-        .project img {
+
+        .project-card:hover {
+            transform: rotateY(180deg);
+        }
+
+        .card-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 10px;
+        }
+
+        /* Front of the Card */
+        .front {
+            background-color: #4b4b4b33;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 20px;
+            text-align: center;
+            transition: background-color 0.3s;
+        }
+
+        .front img {
             max-width: 100%;
-            border-radius: 5px;
+            max-height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
         }
-        .project-title {
+
+        .front .project-title {
             font-size: 1.5rem;
-            margin: 0.5rem 0;
+            margin-top: 10px;
         }
-        .project-description {
-            font-size: 1rem;
-            color: #666;
+
+        .front:hover {
+            background-color: #f0f0f0;
         }
+
+        /* Back of the Card (Video and Description) */
+        .back {
+            background-color: #333;
+            color: #fff;
+            transform: rotateY(180deg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .back video {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .back .project-description {
+            margin-top: 15px;
+            font-size: 1.1rem;
+        }
+
+        /* Smooth Hover Transition */
+        .project-card:hover .front {
+            background-color: #fafafa;
+        }
+
+        /* Responsive Design */
+        @media screen and (max-width: 768px) {
+            .container {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+
+            .header h1 {
+                font-size: 2.5rem;
+            }
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background-color: #333;
+            color: white;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
     </style>
 </head>
 <body>
+    <div class="navbar"> 
+        <img src="logo3.png" class="logo" alt="Logo">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Me</a></li>
+            <li><a href="contactus.html">Contact</a></li>
+            <li><a href="Services.html">Services</a></li>
+            <li><a href="Portforlio.html">Portfolio</a></li>
+        </ul>
+    </div>
+    <!-- Header Section -->
     <div class="header">
         <h1>My Portfolio</h1>
+        <p>Welcome to my creative portfolio. Check out some of my recent projects below!</p>
     </div>
+
+    <!-- Portfolio Projects -->
     <div class="container">
-        <div class="project">
-            <img src="project1.jpg" alt="Project 1">
-            <h2 class="project-title">Project 1</h2>
-            <p class="project-description">Description of project 1.</p>
+        <!-- Project 1 -->
+        <div class="card">
+            <div class="project-card">
+                <!-- Front -->
+                <div class="card-face front">
+                    <img src="gym.png" alt="Project 1">
+                    <h2 class="project-title">Fitzone Gym Website</h2>
+                </div>
+                <!-- Back -->
+                <div class="card-face back">
+                    <video controls>
+                        <source src="gym.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <p class="project-description">An interactive fitness website using HTML ,CSS ,PHP , Javascript.</p>
+                </div>
+            </div>
         </div>
-        <div class="project">
-            <img src="project2.jpg" alt="Project 2">
-            <h2 class="project-title">Project 2</h2>
-            <p class="project-description">Description of project 2.</p>
+
+        <!-- Project 2 -->
+        <div class="card">
+            <div class="project-card">
+                <!-- Front -->
+                <div class="card-face front">
+                    <img src="hotel.png" alt="Project 2">
+                    <h2 class="project-title">Luxe Vista Hotel Android</h2>
+                </div>
+                <!-- Back -->
+                <div class="card-face back">
+                    <video controls>
+                        <source src="Luxevista Hotel App.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <p class="project-description">A mobile app for hotel booking another application for admin .</p>
+                </div>
+            </div>
         </div>
-        <!-- Add more projects as needed -->
+
+        <!-- Project 3 (Example) -->
+        <div class="card">
+            <div class="project-card">
+                <!-- Front -->
+                <div class="card-face front">
+                    <img src="mainBranch.jpg" alt="Project 3">
+                    <h2 class="project-title">SPC Pharmacy System</h2>
+                </div>
+                <!-- Back -->
+                <div class="card-face back">
+                    <video controls> 
+                        <source src="spc.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <p class="project-description">Pharmacy system management using .NET Framework c# Language.</p>
+                </div>
+            </div>
+        </div>
+
+         <!-- Project 4 (Example) -->
+         <div class="card">
+            <div class="project-card">
+                <!-- Front -->
+                <div class="card-face front">
+                    <img src="cos.avif" alt="Project 4">
+                    <h2 class="project-title">Cosmetic Store App System</h2>
+                </div>
+                <!-- Back -->
+                <div class="card-face back">
+                    <video controls> 
+                        <source src="WhatsApp Video 2025-03-27 at 19.47.48_fa04e167.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <p class="project-description">Cosmetic Store Application build froom java.</p>
+                </div>
+            </div>
+        </div>
+
+         <!-- Project 5 (Example) -->
+         <div class="card">
+            <div class="project-card">
+                <!-- Front -->
+                <div class="card-face front">
+                    <img src="cal.png" alt="Project 5">
+                    <h2 class="project-title">Simple Calculator</h2>
+                </div>
+                <!-- Back -->
+                <div class="card-face back">
+                    <video controls> 
+                        <source src="WhatsApp Video 2025-03-27 at 19.17.53_355f95c1.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <p class="project-description">Using HTML ,CSS ,Javasript- for fist time.</p>
+                </div>
+            </div>
+        </div>
+
+         <!-- Project 6  (Example) -->
+         <div class="card">
+            <div class="project-card">
+                <!-- Front -->
+                <div class="card-face front">
+                    <img src="cal.png" alt="Project 5">
+                    <h2 class="project-title">Bookshop Management System</h2>
+                </div>
+                <!-- Back -->
+                <div class="card-face back">
+                    <video controls> 
+                        <source src="WhatsApp Video 2025-03-27 at 19.17.53_355f95c1.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <p class="project-description">Create and exiting project using c++ language for nethra bookshop this is my first system.</p>
+                </div>
+            </div>
+        </div>
     </div>
+
+    <div class="header">
+        <h1>My Certificates</h1>
+        <p>There Are Some Certificates Obtain By me!</p>
+    </div>
+<div class="container">
+    <div class="card">
+        <div class="project-card">
+            <!-- Front -->
+            <div class="card-face front">
+                <img src="cal.png" alt="cer1">
+                <h2 class="project-title">Moratuwa Web Deveolopment</h2>
+            </div>
+            <!-- Back -->
+            <div class="card-face back">
+                <video controls> 
+                    <source src="" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <p class="project-description">Create and exiting project using c++ language for nethra bookshop this is my first system.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    <!-- Footer -->
+    <footer>
+        <p>Created by theekshana vidushan || 2025</p>
+    </footer>
+
 </body>
-</html></div>
+</html>
