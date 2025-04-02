@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Page</title>
-   
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
 </head>
 <body>
     <div class="banner">
-        <div class="navbar"> 
+        <div class="navbar">
             <img src="logo3.png" class="logo" alt="Logo">
+            <div class="menu-icon" onclick="toggleMenu()">☰</div>
             <ul>
                 <li><a href="#">Home</a></li>
                 <li><a href="about.html">About Me</a></li>
@@ -20,6 +20,11 @@
                 <li><a href="Portforlio.html">Portfolio</a></li>
             </ul>
         </div>
+        <script>
+            function toggleMenu() {
+                document.querySelector(".navbar").classList.toggle("active");
+            }
+        </script>
 
         <div class="content-container">
             <div class="side-photo">
@@ -61,6 +66,7 @@
 </body>
 </html>
 
+
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap');
 
@@ -101,7 +107,6 @@ body {
     animation: neonGlow 1.5s infinite alternate;
 }
 
-
 @keyframes neonGlow {
     0% {
         text-shadow: 0 0 5px #0ff, 0 0 10px #0ff, 0 0 20px #0ff, 0 0 40px #00f;
@@ -110,7 +115,6 @@ body {
         text-shadow: 0 0 10px #0ff, 0 0 20px #0ff, 0 0 30px #0ff, 0 0 50px #00f;
     }
 }
-
 
 * {
     margin: 0;
@@ -125,23 +129,25 @@ body {
     background-color: black;
     background-size: cover;
     background-position: center;
-    position: absolute;
+    position: relative;
 }
 
 .navbar {
     width: 95%;
     margin: auto;
-    padding: 35px;
+    padding: 20px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
+    position: relative;
 }
 
 .logo {
     width: 100px;
 }
 
+/* Default nav styles */
 .navbar ul {
     list-style: none;
     display: flex;
@@ -183,16 +189,58 @@ body {
     width: 100%;
 }
 
+/* 🔥 Mobile Responsive Navbar */
+.menu-icon {
+    display: none;
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+    position: absolute;
+    top: 25px;
+    right: 20px;
+}
+
+@media screen and (max-width: 768px) {
+    .menu-icon {
+        display: block;
+    }
+
+    .navbar ul {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        background-color: rgba(0, 0, 0, 0.8);
+        width: 200px;
+        border-radius: 5px;
+        padding: 10px;
+    }
+
+    .navbar ul li {
+        text-align: center;
+        margin: 10px 0;
+    }
+
+    .navbar ul li a {
+        display: block;
+        padding: 10px;
+    }
+
+    .navbar.active ul {
+        display: flex;
+    }
+}
 
 
 .content-container {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     padding: 50px;
     flex-wrap: wrap;
+    text-align: center;
 }
-
 
 .side-photo {
     position: relative;
@@ -202,24 +250,21 @@ body {
     margin-bottom: 30px;
 }
 
-
 .side-photo img {
-    width: 100%; 
-    max-width: 550px; 
-    margin-left: 150px;
+    width: 90%; 
+    max-width: 600px; 
     height: auto;
     border-radius: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
     filter: brightness(80%);
 }
-
-
 .social-media {
-    position: absolute;
-    top: 20%;
-    left: -40px;
+    position: fixed; 
+    top: 40%;
+    left: 90px; 
     display: flex;
     flex-direction: column;
+    z-index: 1000; 
 }
 
 .social-icon {
@@ -257,11 +302,39 @@ body {
     background-color: #bc2a8d;
 }
 
+@media screen and (max-width: 768px) {
+    .social-media {
+        top: 10%;
+        left: 10px;
+    }
+
+    .social-icon {
+        width: 35px;
+        height: 35px;
+        font-size: 18px;
+        margin: 5px 0;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .social-media {
+        top: 5%;
+        left: 5px; 
+    }
+
+    .social-icon {
+        width: 30px;
+        height: 30px;
+        font-size: 16px;
+    }
+}
+
+
 
 .text-content {
-    margin-right: 150px;
     max-width: 750px;
     color: white;
+    margin-left: 20px;
 }
 
 .text-content h1 {
@@ -282,16 +355,15 @@ body {
     background-color: #009688;
 }
 
-
 .whatsapp-icon {
     position: fixed;
-    bottom: 80px;  
-    right: 40px;   
+    bottom: 80px;
+    right: 40px;
     background-color: #25d366;
     color: white;
     font-size: 20px;
     border-radius: 25px;
-    padding: 12px 20px;  
+    padding: 12px 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     transition: background-color 0.3s;
     z-index: 1000;
@@ -302,19 +374,19 @@ body {
 }
 
 .whatsapp-icon i {
-    font-size: 24px; 
-    margin-right: 10px;  
+    font-size: 24px;
+    margin-right: 10px;
 }
 
 .whatsapp-icon:hover {
     background-color: #128C7E;
 }
 
-
 @media (max-width: 768px) {
     .navbar {
         flex-direction: column;
         align-items: center;
+        padding: 20px 0;
     }
 
     .navbar ul {
@@ -324,20 +396,22 @@ body {
 
     .content-container {
         flex-direction: column;
-        text-align: center;
-        padding: 20px;
     }
 
     .side-photo img {
-        top: 0;
         width: 80%;
     }
 
     .text-content {
-        margin-right: 0;
+        margin-left: 0;
         max-width: 100%;
     }
 }
+
+@media (max-width: 430px) {
+    .side-photo img {
+        width: 100%;
+    }
+}
+
 </style>
-
-
