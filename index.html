@@ -12,17 +12,19 @@
         <div class="navbar">
             <img src="logo3.png" class="logo" alt="Logo">
             <div class="menu-icon" onclick="toggleMenu()">☰</div>
-            <ul>
+            <ul id="menu-list">
                 <li><a href="#">Home</a></li>
                 <li><a href="about.html">About Me</a></li>
                 <li><a href="contactus.html">Contact</a></li>
-                <li><a href="Services.html">Services</a></li>
-                <li><a href="Portforlio.html">Portfolio</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
             </ul>
         </div>
+        
         <script>
             function toggleMenu() {
-                document.querySelector(".navbar").classList.toggle("active");
+                const menu = document.getElementById("menu-list");
+                menu.style.display = (menu.style.display === "flex") ? "none" : "flex";
             }
         </script>
 
@@ -133,106 +135,84 @@ body {
 }
 
 .navbar {
-    width: 95%;
-    
-    margin: auto;
-    padding: 20px;
-    padding-top: 43px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    position: relative;
-}
-
-.logo {
-    width: 100px;
-}
-
-/* Default nav styles */
-.navbar ul {
-    list-style: none;
-    display: flex;
-    margin: 0;
-    padding: 0;
-}
-
-.navbar ul li {
-    margin: 0 10px;
-    position: relative;
-    padding-bottom: 10px;
-}
-
-.navbar ul li a {
-    text-decoration: none;
-    color: white;
-    font-size: 18px;
-    position: relative;
-    padding: 15px;
-    padding-bottom: 5px;
-}
-
-.navbar ul li a:hover {
-    color: #1578c9;
-}
-
-.navbar ul li::after {
-    content: '';
-    height: 3px;
-    width: 0;
-    background: #009688;
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    transition: width 0.5s;
-}
-
-.navbar ul li:hover::after {
-    width: 100%;
-}
-
-
-.menu-icon {
-    display: none;
-    font-size: 30px;
-    color: white;
-    cursor: pointer;
-    position: absolute;
-    top: 25px;
-    right: 20px;
-}
-
-@media screen and (max-width: 768px) {
-    .menu-icon {
-        display: block;
-    }
-
-    .navbar ul {
-        display: none;
-        flex-direction: column;
-        position: absolute;
-        top: 60px;
-        right: 20px;
-        background-color: rgba(0, 0, 0, 0.8);
-        width: 200px;
-        border-radius: 5px;
-        padding: 10px;
-    }
-
-    .navbar ul li {
-        text-align: center;
-        margin: 10px 0;
-    }
-
-    .navbar ul li a {
-        display: block;
-        padding: 10px;
-    }
-
-    .navbar.active ul {
-        display: flex;
-    }
-}
+            width: 100%;
+            background: #000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 50px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+        
+        .logo {
+            width: 100px;
+        }
+        
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+            gap: 20px;
+        }
+        
+        .navbar ul li {
+            position: relative;
+        }
+        
+        .navbar ul li a {
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+            padding: 10px 15px;
+            transition: 0.3s;
+        }
+        
+        .navbar ul li a:hover {
+            color: #0ff;
+        }
+        
+        .menu-icon {
+            display: none;
+            font-size: 30px;
+            color: white;
+            cursor: pointer;
+            position: absolute;
+            top: 25px;
+            right: 20px;
+        }
+        
+        /* Responsive Navbar */
+        @media screen and (max-width: 768px) {
+            .menu-icon {
+                display: block;
+            }
+        
+            .navbar ul {
+                display: none;
+                flex-direction: column;
+                background: rgba(0, 0, 0, 0.8);
+                position: absolute;
+                top: 60px;
+                right: 20px;
+                width: 200px;
+                border-radius: 5px;
+                padding: 10px;
+            }
+        
+            .navbar ul li {
+                text-align: center;
+                margin: 10px 0;
+            }
+        
+            .navbar ul li a {
+                display: block;
+                padding: 10px;
+            }
+        }
 
 
 .content-container {
