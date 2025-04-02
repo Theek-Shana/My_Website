@@ -14,60 +14,62 @@
             padding: 0;
         }
 
-     
-.navbar {
-    width: 95%;
-    margin: auto;
-    padding: 35px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
+        .navbar {
+            width: 95%;
+            margin: auto;
+            padding: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
 
-.logo {
-    width: 100px;
-}
+        .logo {
+            width: 100px;
+        }
 
-.navbar ul {
-    list-style: none;
-    display: flex;
-    margin: 0;
-    padding: 0;
-}
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+            flex-wrap: wrap;
+        }
 
-.navbar ul li {
-    margin: 0 10px;
-    position: relative;
-    padding-bottom: 10px;
-}
+        .navbar ul li {
+            margin: 0 10px;
+            position: relative;
+            padding-bottom: 10px;
+        }
 
-.navbar ul li a {
-    text-decoration: none;
-    color: white;
-    font-size: 18px;
-    position: relative;
-    padding: 15px;
-    padding-bottom: 5px;
-}
+        .navbar ul li a {
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+            position: relative;
+            padding: 15px;
+            padding-bottom: 5px;
+        }
 
-.navbar ul li a:hover {
-    color: #1578c9;
-}
+        .navbar ul li a:hover {
+            color: #1578c9;
+        }
 
-.navbar ul li::after {
-    content: '';
-    height: 3px;
-    width: 0;
-    background: #009688;
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    transition: width 0.5s;
-}
+        .navbar ul li::after {
+            content: '';
+            height: 3px;
+            width: 0;
+            background: #009688;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            transition: width 0.5s;
+        }
 
-.navbar ul li:hover::after {
-    width: 100%;
-}
+        .navbar ul li:hover::after {
+            width: 100%;
+        }
+
         /* Banner Section */
         .banner {
             width: 100%;
@@ -153,12 +155,63 @@
 
         /* Responsive Design */
         @media (max-width: 768px) {
-            .experience-item {
-                text-align: center;
+            .navbar ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .navbar ul li {
+                margin: 10px 0;
             }
 
             .banner h1 {
                 font-size: 36px;
+            }
+
+            .about-section h2 {
+                font-size: 30px;
+            }
+
+            .experience-item {
+                text-align: center;
+            }
+
+            .experience-section {
+                padding: 20px;
+            }
+
+            .experience-item h4 {
+                font-size: 20px;
+            }
+
+            .experience-item p {
+                font-size: 16px;
+            }
+
+            .footer {
+                padding: 10px 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .banner h1 {
+                font-size: 28px;
+            }
+
+            .about-section h2 {
+                font-size: 24px;
+            }
+
+            .about-section p {
+                font-size: 16px;
+            }
+
+            .experience-item h4 {
+                font-size: 18px;
+            }
+
+            .experience-item p {
+                font-size: 14px;
             }
         }
     </style>
@@ -204,8 +257,8 @@
             <p>Designed and developed custom websites for small businesses, focusing on responsive design and user-friendly functionality.</p>
         </div>
         <div class="experience-item">
-            <h4>Android App Deveolopment</h4>
-            <p>Designed and developed custom apps for daily needs , focusing on responsive design and user-friendly functionality.</p>
+            <h4>Android App Development</h4>
+            <p>Designed and developed custom apps for daily needs, focusing on responsive design and user-friendly functionality.</p>
         </div>
         <div class="experience-item">
             <h4>Graphic Designer</h4>
@@ -219,7 +272,7 @@
                 <li>Responsive Web Design</li>
             </ul>
             <p>Throughout my career, I have worked with various clients to bring their visions to life by creating customized designs that align with their brand identity. My goal is to combine creativity with functionality to deliver high-quality designs that leave a lasting impression.</p>
-            
+        </div>
     </section>
 
     <!-- Footer Section -->
