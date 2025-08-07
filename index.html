@@ -3,427 +3,784 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home Page</title>
+    <title>Theekshana Vidushan - Portfolio</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+        :root {
+            --primary-color: #00d4ff;
+            --secondary-color: #0066ff;
+            --accent-color: #ff0080;
+            --text-primary: #ffffff;
+            --text-secondary: #b3b3b3;
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #111111;
+            --bg-card: rgba(255, 255, 255, 0.05);
+            --border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Enhanced Animated Background */
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .bg-element {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+            animation: morphFloat 8s ease-in-out infinite;
+        }
+
+        .bg-element:nth-child(1) {
+            width: 400px;
+            height: 400px;
+            top: 10%;
+            right: 10%;
+            background: radial-gradient(circle, rgba(0, 212, 255, 0.15) 0%, rgba(0, 102, 255, 0.05) 70%);
+            animation-delay: 0s;
+        }
+
+        .bg-element:nth-child(2) {
+            width: 350px;
+            height: 350px;
+            bottom: 15%;
+            left: 5%;
+            background: radial-gradient(circle, rgba(255, 0, 128, 0.12) 0%, rgba(188, 42, 141, 0.04) 70%);
+            animation-delay: 3s;
+        }
+
+        .bg-element:nth-child(3) {
+            width: 300px;
+            height: 300px;
+            top: 50%;
+            left: 50%;
+            background: radial-gradient(circle, rgba(0, 255, 128, 0.08) 0%, rgba(37, 211, 102, 0.03) 70%);
+            animation-delay: 6s;
+        }
+
+        .bg-element:nth-child(4) {
+            width: 250px;
+            height: 250px;
+            top: 30%;
+            left: 20%;
+            background: radial-gradient(circle, rgba(255, 128, 0, 0.1) 0%, rgba(255, 165, 0, 0.03) 70%);
+            animation-delay: 2s;
+        }
+
+        .particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            animation: particleFloat 10s linear infinite;
+            opacity: 0.3;
+        }
+
+        @keyframes morphFloat {
+            0%, 100% { 
+                transform: translateY(0px) translateX(0px) scale(1) rotate(0deg);
+                border-radius: 50% 40% 60% 30%;
+            }
+            25% { 
+                transform: translateY(-30px) translateX(20px) scale(1.1) rotate(90deg);
+                border-radius: 30% 60% 40% 70%;
+            }
+            50% { 
+                transform: translateY(-10px) translateX(-15px) scale(0.9) rotate(180deg);
+                border-radius: 70% 30% 50% 60%;
+            }
+            75% { 
+                transform: translateY(20px) translateX(10px) scale(1.05) rotate(270deg);
+                border-radius: 40% 70% 30% 50%;
+            }
+        }
+
+        @keyframes particleFloat {
+            0% { 
+                transform: translateY(100vh) translateX(0px) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.3;
+                transform: scale(1);
+            }
+            90% {
+                opacity: 0.3;
+            }
+            100% { 
+                transform: translateY(-100vh) translateX(100px) scale(0);
+                opacity: 0;
+            }
+        }
+
+        /* Enhanced Header with Glassmorphism */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1rem 5%;
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 212, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .header.scrolled {
+            background: rgba(5, 5, 5, 0.95);
+            border-bottom-color: rgba(0, 212, 255, 0.4);
+        }
+
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            transition: all 0.3s ease;
+            text-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+            cursor: pointer;
+        }
+
+        .logo:hover {
+            filter: brightness(1.2);
+            transform: scale(1.05);
+        }
+
+        /* Enhanced Navigation */
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .nav-link:hover::before {
+            left: 100%;
+        }
+
+        .nav-link:hover {
+            color: var(--primary-color);
+            background: rgba(0, 212, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 4px;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--text-primary);
+            transition: all 0.3s ease;
+        }
+
+        /* Main Content */
+        .main-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 0 5%;
+            margin-top: 80px;
+        }
+
+        .content-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            align-items: center;
+        }
+
+        .text-content {
+            animation: slideInLeft 1s ease-out;
+        }
+
+        .greeting {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .name {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, var(--text-primary), var(--primary-color));
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .dynamic-title {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            height: 60px;
+        }
+
+        .typed-text {
+            background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px var(--primary-color);
+        }
+
+        .description {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            color: var(--bg-primary);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-primary);
+            border: 2px solid var(--border-color);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        /* Enhanced Profile Section with Advanced Effects */
+        .profile-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            animation: slideInRight 1s ease-out;
+            position: relative;
+        }
+
+        .profile-image {
+            position: relative;
+            width: 400px;
+            height: 400px;
+            margin-bottom: 2rem;
+        }
+
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid transparent;
+            background: linear-gradient(45deg, var(--primary-color), var(--accent-color)) border-box;
+            transition: all 0.4s ease;
+            filter: brightness(0.9) contrast(1.1);
+        }
+
+        .profile-image::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: -15px;
+            right: -15px;
+            bottom: -15px;
+            border-radius: 50%;
+            background: conic-gradient(from 0deg, var(--primary-color), var(--accent-color), var(--secondary-color), var(--primary-color));
+            z-index: -1;
+            opacity: 0;
+            transition: all 0.4s ease;
+            animation: rotate 4s linear infinite;
+        }
+
+        .profile-image::after {
+            content: '';
+            position: absolute;
+            top: -8px;
+            left: -8px;
+            right: -8px;
+            bottom: -8px;
+            border-radius: 50%;
+            background: var(--bg-primary);
+            z-index: -1;
+        }
+
+        .profile-image:hover::before {
+            opacity: 1;
+            transform: scale(1.05);
+        }
+
+        .profile-image:hover img {
+            transform: scale(1.05);
+            filter: brightness(1.1) contrast(1.2);
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Floating Elements Around Profile */
+        .profile-decorations {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            pointer-events: none;
+        }
+
+        .decoration-dot {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            opacity: 0.6;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .decoration-dot:nth-child(1) {
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .decoration-dot:nth-child(2) {
+            top: 30%;
+            right: 15%;
+            animation-delay: 1s;
+            background: var(--accent-color);
+        }
+
+        .decoration-dot:nth-child(3) {
+            bottom: 25%;
+            left: 20%;
+            animation-delay: 2s;
+            background: var(--secondary-color);
+        }
+
+        .decoration-dot:nth-child(4) {
+            bottom: 35%;
+            right: 10%;
+            animation-delay: 1.5s;
+        }
+
+        /* Social Links */
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            transform: translateY(-5px);
+            color: var(--text-primary);
+            border-color: var(--primary-color);
+            box-shadow: 0 10px 20px rgba(0, 212, 255, 0.2);
+        }
+
+        .social-link.facebook:hover { border-color: #3b5998; box-shadow: 0 10px 20px rgba(59, 89, 152, 0.3); }
+        .social-link.github:hover { border-color: #7a7a7a; box-shadow: 0 10px 20px rgba(122, 122, 122, 0.3); }
+        .social-link.linkedin:hover { border-color: #0e76a8; box-shadow: 0 10px 20px rgba(14, 118, 168, 0.3); }
+        .social-link.instagram:hover { border-color: #bc2a8d; box-shadow: 0 10px 20px rgba(188, 42, 141, 0.3); }
+
+        /* WhatsApp Float */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, #25d366, #128C7E);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            font-size: 1.5rem;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.5);
+        }
+
+        /* Animations */
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .content-wrapper {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+                text-align: center;
+            }
+            
+            .profile-image {
+                width: 300px;
+                height: 300px;
+            }
+            
+            .name {
+                font-size: 3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: flex;
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 80px;
+                right: -100%;
+                width: 300px;
+                height: calc(100vh - 80px);
+                background: rgba(0, 0, 0, 0.95);
+                backdrop-filter: blur(10px);
+                flex-direction: column;
+                padding: 2rem;
+                transition: right 0.3s ease;
+            }
+
+            .nav-menu.active {
+                right: 0;
+            }
+
+            .nav-link {
+                padding: 1rem 0;
+                border-bottom: 1px solid var(--border-color);
+            }
+
+            .main-container {
+                padding: 0 3%;
+            }
+
+            .name {
+                font-size: 2.5rem;
+            }
+
+            .dynamic-title {
+                font-size: 1.5rem;
+            }
+
+            .profile-image {
+                width: 250px;
+                height: 250px;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main-container {
+                padding: 0 1rem;
+            }
+
+            .name {
+                font-size: 2rem;
+            }
+
+            .profile-image {
+                width: 200px;
+                height: 200px;
+            }
+
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+
+        /* Menu toggle animation */
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+    </style>
 </head>
 <body>
-    <div class="banner">
-        <div class="navbar">
-            <img src="logo3.png" class="logo" alt="Logo">
-            <div class="menu-icon" onclick="toggleMenu()">☰</div>
-            <ul id="menu-list">
-                <li><a href="#">Home</a></li>
-                <li><a href="about.html">About Me</a></li>
-                <li><a href="contactus.html">Contact</a></li>
-                <li><a href="Services.html">Skills</a></li>
-                <li><a href="Portforlio.html">Portfolio</a></li>
+    <!-- Animated Background -->
+    <div class="animated-bg">
+        <div class="bg-circle"></div>
+        <div class="bg-circle"></div>
+        <div class="bg-circle"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="logo">Theekshana</div>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#" class="nav-link">Home</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="Services.html" class="nav-link">Skills</a></li>
+                <li><a href="Portforlio.html" class="nav-link">Portfolio</a></li>
+                <li><a href="contactus.html" class="nav-link">Contact</a></li>
             </ul>
-        </div>
-        
-        <script>
-           function toggleMenu() {
-    const menu = document.getElementById("menu-list");
-    menu.classList.toggle("active");
-}
+            <div class="menu-toggle" id="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
 
-        </script>
-        
-
-        <div class="content-container">
-            <div class="side-photo">
-                <img src="pp1.jpg" alt="Profile Picture">
-                <div class="social-media">
-                    <a href="https://www.facebook.com/theekshana.moremada.3?mibextid=ZbWKwL" target="_blank" class="social-icon facebook"><i class='bx bxl-facebook'></i></a>
-                    <a href="https://github.com/Theek-Shana" target="_blank" class="social-icon github"><i class='bx bxl-github'></i></a>
-                    <a href="https://www.linkedin.com/in/theekshana-vidushan-727689293" target="_blank" class="social-icon linkedin"><i class='bx bxl-linkedin'></i></a>
-                    <a href="https://www.instagram.com/theek_shana_7683?igsh=cDZ4MnFidW5sYTdt" target="_blank" class="social-icon instagram"><i class='bx bxl-instagram'></i></a>
+    <!-- Main Content -->
+    <main class="main-container">
+        <div class="content-wrapper">
+            <div class="text-content">
+                <p class="greeting">Hello, I'm</p>
+                <h1 class="name">Theekshana Vidushan</h1>
+                <div class="dynamic-title">
+                    <span class="typed-text" id="typed-text"></span>
+                </div>
+                <p class="description">
+                    A passionate Software Engineering student dedicated to creating innovative solutions. I specialize in software development, building efficient and scalable applications, while also focusing on web development to craft responsive, user-friendly websites. My background as a graphic designer allows me to create visually appealing and functional digital experiences.
+                </p>
+                <div class="cta-buttons">
+                    <a href="Portforlio.html" class="btn btn-primary">
+                        <i class='bx bx-briefcase'></i>
+                        View Portfolio
+                    </a>
+                    <a href="contactus.html" class="btn btn-secondary">
+                        <i class='bx bx-message-dots'></i>
+                        Get In Touch
+                    </a>
                 </div>
             </div>
 
-            <div class="text-content">
-                <h1>Hello, <br> I'm Theekshana Vidushan</h1>
-                <h2 class="dynamic-text"><span id="typed-text"></span></h2>
-                <p>
-                    "Hi, I’m Theekshana – a Software Engineering student passionate about creating innovative solutions. I specialize in software development, building efficient and scalable applications, while also focusing on web development to craft responsive, user-friendly websites. My background as a graphic designer allows me to create visually appealing and functional digital experiences. I'm committed to learning and evolving in my field, blending technical skills with creativity to deliver impactful solutions. Let’s collaborate to build something unique and innovative!"
-                </p>
+            <div class="profile-section">
+                <div class="profile-image">
+                    <img src="pp1.jpg" alt="Theekshana Vidushan">
+                </div>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/theekshana.moremada.3?mibextid=ZbWKwL" target="_blank" class="social-link facebook">
+                        <i class='bx bxl-facebook'></i>
+                    </a>
+                    <a href="https://github.com/Theek-Shana" target="_blank" class="social-link github">
+                        <i class='bx bxl-github'></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/theekshana-vidushan-727689293" target="_blank" class="social-link linkedin">
+                        <i class='bx bxl-linkedin'></i>
+                    </a>
+                    <a href="https://www.instagram.com/theek_shana_7683?igsh=cDZ4MnFidW5sYTdt" target="_blank" class="social-link instagram">
+                        <i class='bx bxl-instagram'></i>
+                    </a>
+                </div>
             </div>
         </div>
-    </div>
+    </main>
 
-    <a href="https://wa.me/+94717970580" target="_blank" class="whatsapp-icon">
-        <i class='bx bxl-whatsapp'></i> Chat with me
+    <!-- WhatsApp Float -->
+    <a href="https://wa.me/+94717970580" target="_blank" class="whatsapp-float">
+        <i class='bx bxl-whatsapp'></i>
     </a>
 
     <script>
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const navMenu = document.getElementById('nav-menu');
+
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!menuToggle.contains(e.target) && !navMenu.contains(e.target)) {
+                menuToggle.classList.remove('active');
+                navMenu.classList.remove('active');
+            }
+        });
+
+        // Typing effect
         document.addEventListener("DOMContentLoaded", function() {
             new Typed("#typed-text", {
-                strings: ["Software Developer", "Web Developer","Android App Developer " , "Graphic Designer"],
-                typeSpeed: 50,
-                backSpeed: 25,
-                backDelay: 1000,
+                strings: [
+                    "Software Developer", 
+                    "Web Developer",
+                    "Android App Developer", 
+                    "Graphic Designer"
+                ],
+                typeSpeed: 80,
+                backSpeed: 40,
+                backDelay: 1500,
                 startDelay: 500,
-                loop: true
+                loop: true,
+                showCursor: true,
+                cursorChar: '|'
             });
+        });
+
+        // Smooth scrolling for internal links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(0, 0, 0, 0.95)';
+            } else {
+                header.style.background = 'rgba(0, 0, 0, 0.9)';
+            }
         });
     </script>
 </body>
 </html>
-
-
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap');
-
-body {
-    background: #0d0d0d;
-    color: white;
-    font-family: 'Poppins', sans-serif;
-    margin: 0;
-    overflow-x: hidden;
-}
-
-/* Navbar Styles */
-.navbar ul {
-    display: flex;
-    gap: 20px;
-    list-style: none;
-    padding: 0;
-}
-
-.navbar ul li a {
-    color: white;
-    text-decoration: none;
-    font-size: 18px;
-    transition: 0.3s;
-}
-
-.navbar ul li a:hover {
-    color: #0ff;
-}
-
-/* Typing effect text */
-.dynamic-text {
-    font-size: 2rem;
-    font-weight: bold;
-    color: #fff;
-    text-shadow: 0 0 10px #0ff, 0 0 20px #0ff, 0 0 40px #00f;
-    transition: all 0.3s ease-in-out;
-    animation: neonGlow 1.5s infinite alternate;
-}
-
-@keyframes neonGlow {
-    0% {
-        text-shadow: 0 0 5px #0ff, 0 0 10px #0ff, 0 0 20px #0ff, 0 0 40px #00f;
-    }
-    100% {
-        text-shadow: 0 0 10px #0ff, 0 0 20px #0ff, 0 0 30px #0ff, 0 0 50px #00f;
-    }
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    font-family: sans-serif;
-    box-sizing: border-box;
-}
-
-.banner {
-    width: 100%;
-    height: 100vh;
-    background-color: black;
-    background-size: cover;
-    background-position: center;
-    position: relative;
-}
-
-.navbar {
-    width: 95%;
-    
-    margin: auto;
-    padding: 20px;
-    padding-top: 43px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    position: relative;
-}
-
-.logo {
-    width: 100px;
-}
-
-/* Default nav styles */
-.navbar ul {
-    list-style: none;
-    display: flex;
-    margin: 0;
-    padding: 0;
-}
-
-.navbar ul li {
-    margin: 0 10px;
-    position: relative;
-    padding-bottom: 10px;
-}
-
-.navbar ul li a {
-    text-decoration: none;
-    color: white;
-    font-size: 18px;
-    position: relative;
-    padding: 15px;
-    padding-bottom: 5px;
-}
-
-.navbar ul li a:hover {
-    color: #1578c9;
-}
-
-.navbar ul li::after {
-    content: '';
-    height: 3px;
-    width: 0;
-    background: #009688;
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    transition: width 0.5s;
-}
-
-.navbar ul li:hover::after {
-    width: 100%;
-}
-
-
-.menu-icon {
-    display: none;
-    font-size: 30px;
-    color: white;
-    cursor: pointer;
-    position: absolute;
-    top: 25px;
-    right: 20px;
-}
-
-@media screen and (max-width: 768px) {
-    .menu-icon {
-        display: block;
-    }
-
-    .navbar ul {
-        display: none;
-        flex-direction: column;
-        position: absolute;
-        top: 60px;
-        right: 20px;
-        background-color: rgba(0, 0, 0, 0.8);
-        width: 200px;
-        border-radius: 5px;
-        padding: 10px;
-    }
-
-    .navbar ul li {
-        text-align: center;
-        margin: 10px 0;
-    }
-
-    .navbar ul li a {
-        display: block;
-        padding: 10px;
-    }
-
-    .navbar.active ul {
-        display: flex;
-    }
-}
-
-
-.content-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 50px;
-    flex-wrap: wrap;
-    text-align: center;
-}
-
-.side-photo {
-    position: relative;
-    max-width: 100%;
-    display: flex;
-    justify-content: center;
-    margin-bottom: 30px;
-    
-}
-/* Main Image Styling */
-.side-photo img {
-    width: 90%;
-    max-width: 600px;
-    height: auto;
-    border-radius: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-    filter: brightness(85%);
-    display: block;
-    margin: 20px auto;
-}
-
-/* Social Media Icons Container */
-.social-media {
-    position: fixed;
-    top: 40%;
-    left: 100px;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    z-index: 1000;
-}
-
-/* General Social Icon Styles */
-.social-icon {
-    width: 45px;
-    height: 45px;
-    background-color: rgba(0, 0, 0, 0.6);
-    color: white;
-    font-size: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    text-decoration: none;
-    transition: all 0.3s ease;
-}
-
-/* Hover Effect */
-.social-icon:hover {
-    transform: scale(1.15);
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
-}
-
-/* Specific Icon Colors */
-.social-icon.facebook {
-    background-color: #3b5998;
-}
-
-.social-icon.github {
-    background-color: #7a7a7a;
-}
-
-.social-icon.linkedin {
-    background-color: #0e76a8;
-}
-
-.social-icon.instagram {
-    background-color: #bc2a8d;
-}
-
-/* Responsive Adjustments */
-@media screen and (max-width: 768px) {
-    .social-media {
-        left: 10px;
-        top: 50%;
-        transform: translateY(-50%);
-    }
-
-    .social-icon {
-        width: 38px;
-        height: 38px;
-        font-size: 18px;
-    }
-}
-
-@media screen and (max-width: 480px) {
-    .social-media {
-        left: 5px;
-        top: 50%;
-        transform: translateY(-50%);
-    }
-
-    .social-icon {
-        width: 34px;
-        height: 34px;
-        font-size: 16px;
-    }
-}
-
-
-.text-content {
-    max-width: 750px;
-    color: white;
-    margin-left: 20px;
-}
-
-.text-content h1 {
-    font-size: 58px;
-    margin-bottom: 20px;
-    color: rgb(28, 122, 209);
-}
-
-.text-content p {
-    padding-top: 30px;
-    font-size: 20px;
-    line-height: 1.8;
-}
-
-.ab {
-    height: 100px;
-    width: 100%;
-    background-color: #009688;
-}
-
-.whatsapp-icon {
-    position: fixed;
-    bottom: 80px;
-    right: 40px;
-    background-color: #25d366;
-    color: white;
-    font-size: 20px;
-    border-radius: 25px;
-    padding: 12px 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: background-color 0.3s;
-    z-index: 1000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-}
-
-.whatsapp-icon i {
-    font-size: 24px;
-    margin-right: 10px;
-}
-
-.whatsapp-icon:hover {
-    background-color: #128C7E;
-}
-
-@media screen and (max-width: 768px) {
-    .navbar ul {
-        display: none;
-        flex-direction: column;
-        position: fixed;  /* Change from absolute to fixed */
-        top: 60px;
-        right: 20px;
-        background-color: rgba(0, 0, 0, 0.9);
-        width: 200px;
-        border-radius: 5px;
-        padding: 10px;
-        z-index: 1000; /* Ensures it stays on top */
-    }
-}
-
-@media (max-width: 430px) {
-    .side-photo img {
-        width: 100%;
-    }
-}
-@media screen and (max-width: 768px) {
-    .navbar ul.active {
-        display: flex;
-    }
-}
-
-
-</style>
-
