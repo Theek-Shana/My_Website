@@ -35,10 +35,12 @@
 
         body {
             font-family: 'Inter', sans-serif;
-            background: var(--bg-primary);
+            background: linear-gradient(135deg, #0a0a0a 0%, #111111 50%, #0a0a0a 100%);
             color: var(--text-primary);
             line-height: 1.6;
             overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
         }
 
         /* Enhanced Dynamic Background */
@@ -46,75 +48,86 @@
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
+            width: 100vw;
+            height: 100vh;
             z-index: -1;
             overflow: hidden;
+            background: radial-gradient(ellipse at center, rgba(0, 212, 255, 0.03) 0%, transparent 50%),
+                        radial-gradient(ellipse at 80% 20%, rgba(255, 0, 128, 0.03) 0%, transparent 50%),
+                        radial-gradient(ellipse at 20% 80%, rgba(76, 175, 80, 0.02) 0%, transparent 50%);
         }
 
         .bg-element {
             position: absolute;
             border-radius: 50%;
-            filter: blur(120px);
-            animation: morphFloat 12s ease-in-out infinite;
+            filter: blur(80px);
+            animation: morphFloat 15s ease-in-out infinite;
+            opacity: 0.6;
         }
 
         .bg-element:nth-child(1) {
-            width: 500px;
-            height: 500px;
-            top: -10%;
-            right: -10%;
-            background: radial-gradient(circle, rgba(0, 212, 255, 0.2) 0%, rgba(0, 102, 255, 0.05) 70%);
+            width: 300px;
+            height: 300px;
+            top: 10%;
+            right: 10%;
+            background: radial-gradient(circle, rgba(0, 212, 255, 0.25) 0%, rgba(0, 102, 255, 0.1) 50%, transparent 100%);
             animation-delay: 0s;
         }
 
         .bg-element:nth-child(2) {
-            width: 400px;
-            height: 400px;
-            bottom: -10%;
-            left: -10%;
-            background: radial-gradient(circle, rgba(255, 0, 128, 0.15) 0%, rgba(188, 42, 141, 0.05) 70%);
-            animation-delay: 4s;
+            width: 250px;
+            height: 250px;
+            bottom: 20%;
+            left: 15%;
+            background: radial-gradient(circle, rgba(255, 0, 128, 0.2) 0%, rgba(188, 42, 141, 0.08) 50%, transparent 100%);
+            animation-delay: 5s;
         }
 
         .bg-element:nth-child(3) {
-            width: 350px;
-            height: 350px;
-            top: 30%;
-            left: 30%;
-            background: radial-gradient(circle, rgba(76, 175, 80, 0.12) 0%, rgba(37, 211, 102, 0.04) 70%);
-            animation-delay: 8s;
+            width: 200px;
+            height: 200px;
+            top: 50%;
+            left: 50%;
+            background: radial-gradient(circle, rgba(76, 175, 80, 0.15) 0%, rgba(37, 211, 102, 0.06) 50%, transparent 100%);
+            animation-delay: 10s;
         }
 
         .bg-element:nth-child(4) {
-            width: 300px;
-            height: 300px;
-            top: 60%;
-            right: 20%;
-            background: radial-gradient(circle, rgba(255, 152, 0, 0.1) 0%, rgba(255, 193, 7, 0.03) 70%);
+            width: 180px;
+            height: 180px;
+            top: 70%;
+            right: 25%;
+            background: radial-gradient(circle, rgba(255, 152, 0, 0.12) 0%, rgba(255, 193, 7, 0.05) 50%, transparent 100%);
             animation-delay: 2s;
         }
 
         @keyframes morphFloat {
             0%, 100% { 
-                transform: translateY(0px) translateX(0px) scale(1) rotate(0deg);
+                transform: translate(0px, 0px) scale(1) rotate(0deg);
                 border-radius: 60% 40% 30% 70%;
             }
             25% { 
-                transform: translateY(-50px) translateX(30px) scale(1.2) rotate(90deg);
+                transform: translate(30px, -20px) scale(1.1) rotate(90deg);
                 border-radius: 30% 60% 70% 40%;
             }
             50% { 
-                transform: translateY(-20px) translateX(-40px) scale(0.8) rotate(180deg);
+                transform: translate(-15px, 10px) scale(0.9) rotate(180deg);
                 border-radius: 70% 30% 50% 60%;
             }
             75% { 
-                transform: translateY(40px) translateX(20px) scale(1.1) rotate(270deg);
+                transform: translate(20px, -30px) scale(1.05) rotate(270deg);
                 border-radius: 40% 70% 30% 50%;
             }
         }
 
-        /* Enhanced Header */
+        /* Skills Grid - Fix spacing and layout */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
         .header {
             position: fixed;
             top: 0;
@@ -265,15 +278,15 @@
 
         /* Enhanced Skill Category Cards */
         .skill-category {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 24px;
-            padding: 0;
-            backdrop-filter: blur(15px);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
             cursor: pointer;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
         }
 
         .skill-category::before {
