@@ -6,25 +6,43 @@
     <title>My Skills - Theekshana Vidushan</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
         :root {
-            --primary-color: #00d4ff;
-            --secondary-color: #0066ff;
-            --accent-color: #ff0080;
-            --text-primary: #ffffff;
-            --text-secondary: #b3b3b3;
-            --text-muted: #888888;
-            --bg-primary: #0a0a0a;
-            --bg-secondary: #111111;
-            --bg-card: rgba(255, 255, 255, 0.05);
+            --primary: #00D4FF;
+            --secondary: #0066FF;
+            --accent: #FF0080;
+            --success: #00C851;
+            --warning: #FFB900;
+            --danger: #FF3547;
+            
+            --text-primary: #FFFFFF;
+            --text-secondary: #B8BCC8;
+            --text-muted: #6C7293;
+            
+            --bg-primary: #0A0A0F;
+            --bg-secondary: #13131A;
+            --bg-tertiary: #1A1A24;
+            --bg-card: rgba(255, 255, 255, 0.03);
             --bg-card-hover: rgba(255, 255, 255, 0.08);
-            --border-color: rgba(255, 255, 255, 0.1);
-            --border-hover: rgba(0, 212, 255, 0.3);
-            --success-color: #4CAF50;
-            --warning-color: #ff9800;
-            --shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-            --shadow-hover: 0 20px 60px rgba(0, 212, 255, 0.2);
+            
+            --border-light: rgba(255, 255, 255, 0.08);
+            --border-medium: rgba(255, 255, 255, 0.15);
+            --border-accent: rgba(0, 212, 255, 0.3);
+            
+            --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-md: 0 10px 25px rgba(0, 0, 0, 0.2);
+            --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.3);
+            --shadow-glow: 0 0 30px rgba(0, 212, 255, 0.2);
+            
+            --radius-sm: 8px;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+            --radius-xl: 32px;
+            
+            --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         * {
@@ -34,8 +52,8 @@
         }
 
         body {
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #0a0a0a 0%, #111111 50%, #0a0a0a 100%);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 50%, var(--bg-primary) 100%);
             color: var(--text-primary);
             line-height: 1.6;
             overflow-x: hidden;
@@ -43,106 +61,72 @@
             position: relative;
         }
 
-        /* Enhanced Dynamic Background */
-        .animated-bg {
+        /* Dynamic Background */
+        .bg-animation {
             position: fixed;
             top: 0;
             left: 0;
             width: 100vw;
             height: 100vh;
-            z-index: -1;
-            overflow: hidden;
-            background: radial-gradient(ellipse at center, rgba(0, 212, 255, 0.03) 0%, transparent 50%),
-                        radial-gradient(ellipse at 80% 20%, rgba(255, 0, 128, 0.03) 0%, transparent 50%),
-                        radial-gradient(ellipse at 20% 80%, rgba(76, 175, 80, 0.02) 0%, transparent 50%);
+            z-index: -2;
+            opacity: 0.4;
         }
 
-        .bg-element {
+        .bg-orb {
             position: absolute;
             border-radius: 50%;
-            filter: blur(80px);
-            animation: morphFloat 15s ease-in-out infinite;
-            opacity: 0.6;
+            filter: blur(60px);
+            animation: float 8s ease-in-out infinite;
         }
 
-        .bg-element:nth-child(1) {
-            width: 300px;
-            height: 300px;
-            top: 10%;
-            right: 10%;
-            background: radial-gradient(circle, rgba(0, 212, 255, 0.25) 0%, rgba(0, 102, 255, 0.1) 50%, transparent 100%);
+        .bg-orb:nth-child(1) {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, var(--primary) 0%, transparent 70%);
+            top: -10%;
+            right: -10%;
             animation-delay: 0s;
         }
 
-        .bg-element:nth-child(2) {
+        .bg-orb:nth-child(2) {
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
+            bottom: -15%;
+            left: -10%;
+            animation-delay: 4s;
+        }
+
+        .bg-orb:nth-child(3) {
             width: 250px;
             height: 250px;
-            bottom: 20%;
-            left: 15%;
-            background: radial-gradient(circle, rgba(255, 0, 128, 0.2) 0%, rgba(188, 42, 141, 0.08) 50%, transparent 100%);
-            animation-delay: 5s;
-        }
-
-        .bg-element:nth-child(3) {
-            width: 200px;
-            height: 200px;
-            top: 50%;
-            left: 50%;
-            background: radial-gradient(circle, rgba(76, 175, 80, 0.15) 0%, rgba(37, 211, 102, 0.06) 50%, transparent 100%);
-            animation-delay: 10s;
-        }
-
-        .bg-element:nth-child(4) {
-            width: 180px;
-            height: 180px;
-            top: 70%;
-            right: 25%;
-            background: radial-gradient(circle, rgba(255, 152, 0, 0.12) 0%, rgba(255, 193, 7, 0.05) 50%, transparent 100%);
+            background: radial-gradient(circle, var(--success) 0%, transparent 70%);
+            top: 40%;
+            left: 40%;
             animation-delay: 2s;
         }
 
-        @keyframes morphFloat {
-            0%, 100% { 
-                transform: translate(0px, 0px) scale(1) rotate(0deg);
-                border-radius: 60% 40% 30% 70%;
-            }
-            25% { 
-                transform: translate(30px, -20px) scale(1.1) rotate(90deg);
-                border-radius: 30% 60% 70% 40%;
-            }
-            50% { 
-                transform: translate(-15px, 10px) scale(0.9) rotate(180deg);
-                border-radius: 70% 30% 50% 60%;
-            }
-            75% { 
-                transform: translate(20px, -30px) scale(1.05) rotate(270deg);
-                border-radius: 40% 70% 30% 50%;
-            }
+        @keyframes float {
+            0%, 100% { transform: translate(0px, 0px) rotate(0deg) scale(1); }
+            33% { transform: translate(30px, -30px) rotate(120deg) scale(1.1); }
+            66% { transform: translate(-20px, 20px) rotate(240deg) scale(0.9); }
         }
 
-        /* Skills Grid - Fix spacing and layout */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+        /* Header */
         .header {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            padding: 1.2rem 5%;
-            background: rgba(10, 10, 10, 0.95);
-            backdrop-filter: blur(25px);
-            border-bottom: 1px solid var(--border-color);
-            box-shadow: var(--shadow);
+            padding: 1rem 2rem;
+            background: rgba(10, 10, 15, 0.95);
+            backdrop-filter: blur(20px) saturate(1.8);
+            border-bottom: 1px solid var(--border-light);
             z-index: 1000;
-            transition: all 0.3s ease;
+            transition: all var(--transition-normal);
         }
 
-        .navbar {
+        .nav {
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -151,14 +135,14 @@
         }
 
         .logo {
-            font-size: 2rem;
+            font-size: 1.75rem;
             font-weight: 800;
-            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
-            background-clip: text;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
             text-decoration: none;
-            transition: all 0.3s ease;
+            transition: transform var(--transition-normal);
         }
 
         .logo:hover {
@@ -170,123 +154,133 @@
             list-style: none;
             gap: 0.5rem;
             background: var(--bg-card);
-            padding: 0.8rem 1.8rem;
+            padding: 0.5rem 1rem;
             border-radius: 50px;
-            border: 1px solid var(--border-color);
-            backdrop-filter: blur(15px);
+            border: 1px solid var(--border-light);
+            backdrop-filter: blur(10px);
         }
 
         .nav-link {
             color: var(--text-secondary);
             text-decoration: none;
+            padding: 0.75rem 1.25rem;
+            border-radius: 25px;
             font-weight: 500;
-            padding: 0.8rem 1.5rem;
-            border-radius: 30px;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 0.9rem;
+            transition: all var(--transition-normal);
             position: relative;
         }
 
-        .nav-link::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
-            border-radius: 30px;
-            opacity: 0;
-            transform: scale(0.8);
-            transition: all 0.3s ease;
-            z-index: -1;
-        }
-
-        .nav-link:hover::before, .nav-link.active::before {
-            opacity: 0.15;
-            transform: scale(1);
-        }
-
         .nav-link:hover, .nav-link.active {
-            color: var(--primary-color);
+            color: var(--primary);
+            background: rgba(0, 212, 255, 0.1);
             transform: translateY(-2px);
         }
 
         /* Hero Section */
-        .hero-banner {
-            margin-top: 100px;
-            padding: 100px 5% 80px;
+        .hero {
+            margin-top: 80px;
+            padding: 80px 2rem;
             text-align: center;
-            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1) 0%, rgba(255, 0, 128, 0.1) 100%);
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.05) 0%, rgba(255, 0, 128, 0.05) 100%);
             position: relative;
             overflow: hidden;
         }
 
-        .hero-content h1 {
-            font-size: 4rem;
-            font-weight: 800;
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 900;
             margin-bottom: 1.5rem;
-            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
-            background-clip: text;
+            background: linear-gradient(135deg, var(--text-primary), var(--primary));
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
-            animation: fadeInUp 1s ease-out;
+            letter-spacing: -0.02em;
         }
 
-        .hero-content p {
-            font-size: 1.3rem;
+        .hero p {
+            font-size: 1.25rem;
             color: var(--text-secondary);
-            max-width: 700px;
-            margin: 0 auto;
-            animation: fadeInUp 1s ease-out 0.2s both;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            line-height: 1.7;
         }
 
-        /* Skills Container */
-        .skills-container {
-            max-width: 1300px;
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            display: block;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Skills Section */
+        .skills-section {
+            padding: 80px 2rem;
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 80px 5% 100px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
         }
 
         .section-title {
-            text-align: center;
-            margin-bottom: 80px;
-        }
-
-        .section-title h2 {
-            font-size: 3rem;
+            font-size: clamp(2rem, 4vw, 3rem);
             font-weight: 800;
-            margin-bottom: 1.5rem;
-            background: linear-gradient(135deg, var(--text-primary), var(--primary-color));
-            background-clip: text;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--text-primary), var(--primary));
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        .section-title p {
-            font-size: 1.2rem;
+        .section-subtitle {
+            font-size: 1.1rem;
             color: var(--text-secondary);
-            max-width: 600px;
+            max-width: 500px;
             margin: 0 auto;
+            line-height: 1.7;
         }
 
         /* Skills Grid */
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 2.5rem;
+            gap: 2rem;
+            margin-bottom: 4rem;
         }
 
-        /* Enhanced Skill Category Cards */
+        /* Skill Category Cards */
         .skill-category {
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 20px;
-            backdrop-filter: blur(10px);
-            transition: all 0.4s ease;
-            position: relative;
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-lg);
+            backdrop-filter: blur(20px);
+            transition: all var(--transition-slow);
             overflow: hidden;
+            position: relative;
             cursor: pointer;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
         }
 
         .skill-category::before {
@@ -294,105 +288,122 @@
             position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(0, 212, 255, 0.05), rgba(255, 0, 128, 0.05));
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.03), rgba(255, 0, 128, 0.03));
             opacity: 0;
-            transition: opacity 0.4s ease;
+            transition: opacity var(--transition-normal);
+        }
+
+        .skill-category:hover {
+            transform: translateY(-8px);
+            border-color: var(--border-accent);
+            box-shadow: var(--shadow-lg), var(--shadow-glow);
         }
 
         .skill-category:hover::before {
             opacity: 1;
         }
 
-        .skill-category:hover {
-            transform: translateY(-15px) scale(1.02);
-            border-color: var(--border-hover);
-            box-shadow: var(--shadow-hover);
-        }
-
         .category-header {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 2.5rem;
+            padding: 2rem;
             border-bottom: 1px solid transparent;
-            transition: all 0.3s ease;
+            transition: border-color var(--transition-normal);
         }
 
         .skill-category.expanded .category-header {
-            border-bottom-color: var(--border-color);
+            border-bottom-color: var(--border-light);
         }
 
-        .category-title {
+        .category-info {
             display: flex;
             align-items: center;
             gap: 1.5rem;
         }
 
         .category-icon {
-            width: 65px;
-            height: 65px;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            border-radius: 16px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: var(--radius-md);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.8rem;
-            color: var(--bg-primary);
-            box-shadow: 0 8px 25px rgba(0, 212, 255, 0.3);
-            transition: all 0.3s ease;
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            box-shadow: var(--shadow-md);
+            transition: all var(--transition-normal);
         }
 
         .skill-category:hover .category-icon {
             transform: scale(1.1) rotate(5deg);
-            box-shadow: 0 12px 35px rgba(0, 212, 255, 0.4);
+            box-shadow: var(--shadow-lg);
         }
 
-        .category-name {
-            font-size: 1.4rem;
+        .category-details h3 {
+            font-size: 1.25rem;
             font-weight: 700;
             color: var(--text-primary);
+            margin-bottom: 0.25rem;
         }
 
-        .expand-icon {
-            font-size: 1.4rem;
-            color: var(--text-secondary);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            padding: 0.5rem;
+        .category-count {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .expand-btn {
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
             background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            transition: all var(--transition-normal);
+            cursor: pointer;
         }
 
-        .skill-category.expanded .expand-icon {
-            transform: rotate(180deg);
-            color: var(--primary-color);
+        .expand-btn:hover {
             background: rgba(0, 212, 255, 0.1);
+            border-color: var(--border-accent);
+            color: var(--primary);
         }
 
-        /* Enhanced Skills List */
+        .skill-category.expanded .expand-btn {
+            transform: rotate(180deg);
+            background: rgba(0, 212, 255, 0.1);
+            color: var(--primary);
+        }
+
+        /* Skills List */
         .skills-list {
             max-height: 0;
             overflow: hidden;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            padding: 0 2.5rem;
+            transition: all var(--transition-slow);
         }
 
         .skill-category.expanded .skills-list {
-            max-height: 800px;
-            padding: 0 2.5rem 2.5rem;
+            max-height: 1000px;
+            padding: 0 2rem 2rem;
         }
 
         .skill-item {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 1.5rem;
-            margin: 1rem 0;
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 16px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            padding: 1.25rem;
+            margin: 0.75rem 0;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            transition: all var(--transition-normal);
             position: relative;
             overflow: hidden;
         }
@@ -404,46 +415,46 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.15), transparent);
-            transition: left 0.8s ease;
+            background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.1), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .skill-item:hover {
+            background: var(--bg-card-hover);
+            border-color: var(--border-accent);
+            transform: translateX(8px);
+            box-shadow: var(--shadow-md);
         }
 
         .skill-item:hover::before {
             left: 100%;
         }
 
-        .skill-item:hover {
-            background: var(--bg-card-hover);
-            border-color: var(--border-hover);
-            transform: translateX(15px) scale(1.02);
-            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.1);
-        }
-
         .skill-info {
             display: flex;
             align-items: center;
-            gap: 1.2rem;
+            gap: 1rem;
         }
 
         .skill-icon {
-            font-size: 1.8rem;
-            width: 50px;
-            height: 50px;
+            width: 45px;
+            height: 45px;
+            border-radius: var(--radius-sm);
+            background: rgba(255, 255, 255, 0.05);
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 12px;
-            background: rgba(0, 212, 255, 0.1);
-            transition: all 0.3s ease;
+            font-size: 1.25rem;
+            transition: all var(--transition-normal);
         }
 
         .skill-item:hover .skill-icon {
             transform: scale(1.1);
-            background: rgba(0, 212, 255, 0.2);
+            background: rgba(255, 255, 255, 0.1);
         }
 
         .skill-name {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: 600;
             color: var(--text-primary);
         }
@@ -455,31 +466,31 @@
         }
 
         .level-bar {
-            width: 100px;
-            height: 8px;
+            width: 120px;
+            height: 6px;
             background: rgba(255, 255, 255, 0.1);
-            border-radius: 4px;
+            border-radius: 3px;
             overflow: hidden;
             position: relative;
         }
 
-        .level-fill {
+        .level-progress {
             height: 100%;
-            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-            border-radius: 4px;
-            transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 3px;
+            transition: width 1s ease;
             position: relative;
             overflow: hidden;
         }
 
-        .level-fill::after {
+        .level-progress::after {
             content: '';
             position: absolute;
             top: 0;
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
             animation: shimmer 2s infinite;
         }
 
@@ -489,120 +500,179 @@
         }
 
         .level-text {
-            font-size: 0.95rem;
-            color: var(--text-secondary);
+            font-size: 0.875rem;
             font-weight: 600;
+            color: var(--text-secondary);
             min-width: 80px;
+            text-align: right;
+        }
+
+        /* Level specific colors */
+        .level-expert .level-progress { background: linear-gradient(90deg, var(--success), #00FF7F); }
+        .level-advanced .level-progress { background: linear-gradient(90deg, var(--primary), var(--secondary)); }
+        .level-intermediate .level-progress { background: linear-gradient(90deg, var(--warning), #FFC107); }
+        .level-beginner .level-progress { background: linear-gradient(90deg, var(--accent), #FF6B9D); }
+
+        /* Quick Stats */
+        .quick-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 4rem;
+        }
+
+        .stat-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            padding: 2rem;
+            text-align: center;
+            transition: all var(--transition-normal);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--border-accent);
+            box-shadow: var(--shadow-md);
+        }
+
+        .stat-icon {
+            width: 50px;
+            height: 50px;
+            margin: 0 auto 1rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            color: var(--text-primary);
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-description {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            font-weight: 500;
         }
 
         /* Floating Action Button */
         .fab {
             position: fixed;
-            bottom: 40px;
-            right: 40px;
-            width: 70px;
-            height: 70px;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            bottom: 2rem;
+            right: 2rem;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--bg-primary);
+            color: var(--text-primary);
             text-decoration: none;
-            font-size: 1.8rem;
-            box-shadow: 0 8px 25px rgba(0, 212, 255, 0.3);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            font-size: 1.25rem;
+            box-shadow: var(--shadow-lg);
+            transition: all var(--transition-normal);
             z-index: 1000;
+            border: none;
+            cursor: pointer;
         }
 
         .fab:hover {
-            transform: scale(1.15) rotate(10deg);
-            box-shadow: 0 15px 40px rgba(0, 212, 255, 0.5);
+            transform: scale(1.1) rotate(10deg);
+            box-shadow: var(--shadow-glow);
         }
 
         /* Responsive Design */
         @media (max-width: 768px) {
-            .hero-content h1 {
-                font-size: 2.8rem;
+            .nav-menu { display: none; }
+            
+            .hero {
+                padding: 60px 1rem;
             }
-
-            .hero-content p {
-                font-size: 1.1rem;
-            }
-
-            .skills-grid {
-                grid-template-columns: 1fr;
+            
+            .hero-stats {
                 gap: 2rem;
             }
-
+            
+            .skills-section {
+                padding: 60px 1rem;
+            }
+            
+            .skills-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
             .skill-category {
-                margin: 0 1rem;
+                margin: 0;
             }
-
+            
             .category-header {
-                padding: 2rem;
+                padding: 1.5rem;
             }
-
-            .skills-list {
-                padding: 0 2rem;
-            }
-
+            
             .skill-category.expanded .skills-list {
-                padding: 0 2rem 2rem;
+                padding: 0 1.5rem 1.5rem;
             }
-
-            .nav-menu {
-                display: none;
-            }
-
-            .section-title h2 {
-                font-size: 2.2rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hero-content h1 {
-                font-size: 2.2rem;
-            }
-
-            .category-icon {
-                width: 55px;
-                height: 55px;
-                font-size: 1.5rem;
-            }
-
-            .category-name {
-                font-size: 1.2rem;
-            }
-
+            
             .skill-item {
-                padding: 1.2rem;
                 flex-direction: column;
                 align-items: flex-start;
                 gap: 1rem;
             }
-
+            
             .skill-level {
                 width: 100%;
                 justify-content: space-between;
             }
+            
+            .level-bar {
+                flex: 1;
+                margin-right: 1rem;
+            }
         }
 
-        /* Animations */
+        @media (max-width: 480px) {
+            .skill-item {
+                padding: 1rem;
+            }
+            
+            .category-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.25rem;
+            }
+            
+            .fab {
+                bottom: 1rem;
+                right: 1rem;
+                width: 50px;
+                height: 50px;
+            }
+        }
+
+        /* Animation Classes */
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
+        }
+
         @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(40px);
+                transform: translateY(30px);
             }
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
-        }
-
-        .skill-category {
-            animation: fadeInUp 0.8s ease-out forwards;
-            opacity: 0;
         }
 
         .skill-category:nth-child(1) { animation-delay: 0.1s; }
@@ -612,555 +682,159 @@
         .skill-category:nth-child(5) { animation-delay: 0.5s; }
         .skill-category:nth-child(6) { animation-delay: 0.6s; }
 
-        /* Level Colors */
-        .level-expert { --level-color: var(--success-color); }
-        .level-advanced { --level-color: var(--primary-color); }
-        .level-intermediate { --level-color: var(--warning-color); }
-        .level-beginner { --level-color: var(--accent-color); }
+        /* Scrollbar Styles */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-secondary);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--border-medium);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--border-accent);
+        }
     </style>
 </head>
 <body>
-    <!-- Enhanced Dynamic Background -->
-    <div class="animated-bg">
-        <div class="bg-element"></div>
-        <div class="bg-element"></div>
-        <div class="bg-element"></div>
-        <div class="bg-element"></div>
+    <!-- Background Animation -->
+    <div class="bg-animation">
+        <div class="bg-orb"></div>
+        <div class="bg-orb"></div>
+        <div class="bg-orb"></div>
     </div>
 
     <!-- Header -->
     <header class="header">
-        <nav class="navbar">
+        <nav class="nav">
             <a href="index.html" class="logo">Theekshana</a>
             <ul class="nav-menu">
                 <li><a href="index.html" class="nav-link">Home</a></li>
                 <li><a href="about.html" class="nav-link">About</a></li>
                 <li><a href="Services.html" class="nav-link active">Skills</a></li>
-                <li><a href="Portforlio.html" class="nav-link">Portfolio</a></li>
-                <li><a href="contactus.html" class="nav-link">Contact</a></li>
+                <li><a href="Portfolio.html" class="nav-link">Portfolio</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
             </ul>
         </nav>
     </header>
 
-    <!-- Hero Banner -->
-    <section class="hero-banner">
-        <div class="hero-content">
-            <h1>My Skills & Expertise</h1>
-            <p>Explore my comprehensive technical abilities and creative skills that drive innovation and deliver exceptional results</p>
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Skills & Expertise</h1>
+        <p>Discover my comprehensive technical abilities, creative talents, and professional competencies that drive innovation and deliver exceptional results.</p>
+        
+        <div class="hero-stats">
+            <div class="stat">
+                <span class="stat-number">25+</span>
+                <span class="stat-label">Technologies</span>
+            </div>
+            <div class="stat">
+                <span class="stat-number">6</span>
+                <span class="stat-label">Categories</span>
+            </div>
+            <div class="stat">
+                <span class="stat-number">5+</span>
+                <span class="stat-label">Years Experience</span>
+            </div>
         </div>
     </section>
 
-    <!-- Skills Container -->
-    <div class="skills-container">
-        <div class="section-title">
-            <h2>Technical Expertise</h2>
-            <p>A detailed overview of my technical competencies, creative abilities, and professional skill levels</p>
+    <!-- Skills Section -->
+    <section class="skills-section">
+        <div class="section-header">
+            <h2 class="section-title">Technical Competencies</h2>
+            <p class="section-subtitle">A comprehensive overview of my technical skills, creative abilities, and professional expertise levels.</p>
         </div>
 
         <div class="skills-grid">
             <!-- Frontend Development -->
-            <div class="skill-category" onclick="toggleCategory(this)">
+            <div class="skill-category fade-in-up" onclick="toggleCategory(this)">
                 <div class="category-header">
-                    <div class="category-title">
+                    <div class="category-info">
                         <div class="category-icon">
                             <i class="fas fa-code"></i>
                         </div>
-                        <div class="category-name">Frontend Development</div>
+                        <div class="category-details">
+                            <h3>Frontend Development</h3>
+                            <span class="category-count">4 Technologies</span>
+                        </div>
                     </div>
-                    <div class="expand-icon">
+                    <button class="expand-btn">
                         <i class="fas fa-chevron-down"></i>
-                    </div>
+                    </button>
                 </div>
                 <div class="skills-list">
                     <div class="skill-item">
                         <div class="skill-info">
-                            <div class="skill-icon" style="color: #02569b;">
-                                <i class="fas fa-mobile"></i>
-                            </div>
-                            <div class="skill-name">Flutter</div>
-                        </div>
-                        <div class="skill-level">
-                            <div class="level-bar">
-                                <div class="level-fill" style="width: 75%;"></div>
-                            </div>
-                            <div class="level-text">Intermediate</div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-info">
-                            <div class="skill-icon" style="color: #007acc;">
-                                <i class="fab fa-swift"></i>
-                            </div>
-                            <div class="skill-name">iOS Development</div>
-                        </div>
-                        <div class="skill-level">
-                            <div class="level-bar">
-                                <div class="level-fill" style="width: 65%;"></div>
-                            </div>
-                            <div class="level-text">Intermediate</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Database & Cloud -->
-            <div class="skill-category" onclick="toggleCategory(this)">
-                <div class="category-header">
-                    <div class="category-title">
-                        <div class="category-icon">
-                            <i class="fas fa-database"></i>
-                        </div>
-                        <div class="category-name">Database & Cloud</div>
-                    </div>
-                    <div class="expand-icon">
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                </div>
-                <div class="skills-list">
-                    <div class="skill-item">
-                        <div class="skill-info">
-                            <div class="skill-icon" style="color: #336791;">
-                                <i class="fas fa-database"></i>
-                            </div>
-                            <div class="skill-name">MySQL</div>
-                        </div>
-                        <div class="skill-level">
-                            <div class="level-bar">
-                                <div class="level-fill" style="width: 80%;"></div>
-                            </div>
-                            <div class="level-text">Advanced</div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-info">
-                            <div class="skill-icon" style="color: #47a248;">
-                                <i class="fas fa-leaf"></i>
-                            </div>
-                            <div class="skill-name">MongoDB</div>
-                        </div>
-                        <div class="skill-level">
-                            <div class="level-bar">
-                                <div class="level-fill" style="width: 70%;"></div>
-                            </div>
-                            <div class="level-text">Intermediate</div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-info">
-                            <div class="skill-icon" style="color: #ff9900;">
-                                <i class="fab fa-aws"></i>
-                            </div>
-                            <div class="skill-name">AWS</div>
-                        </div>
-                        <div class="skill-level">
-                            <div class="level-bar">
-                                <div class="level-fill" style="width: 65%;"></div>
-                            </div>
-                            <div class="level-text">Intermediate</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Graphic Design -->
-            <div class="skill-category" onclick="toggleCategory(this)">
-                <div class="category-header">
-                    <div class="category-title">
-                        <div class="category-icon">
-                            <i class="fas fa-palette"></i>
-                        </div>
-                        <div class="category-name">Graphic Design</div>
-                    </div>
-                    <div class="expand-icon">
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                </div>
-                <div class="skills-list">
-                    <div class="skill-item">
-                        <div class="skill-info">
-                            <div class="skill-icon" style="color: #31a8ff;">
-                                <i class="fas fa-layer-group"></i>
-                            </div>
-                            <div class="skill-name">Adobe Photoshop</div>
-                        </div>
-                        <div class="skill-level">
-                            <div class="level-bar">
-                                <div class="level-fill" style="width: 90%;"></div>
-                            </div>
-                            <div class="level-text">Expert</div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-info">
-                            <div class="skill-icon" style="color: #ff9a00;">
-                                <i class="fas fa-bezier-curve"></i>
-                            </div>
-                            <div class="skill-name">Adobe Illustrator</div>
-                        </div>
-                        <div class="skill-level">
-                            <div class="level-bar">
-                                <div class="level-fill" style="width: 85%;"></div>
-                            </div>
-                            <div class="level-text">Advanced</div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-info">
-                            <div class="skill-icon" style="color: #31a8ff;">
-                                <i class="fas fa-camera"></i>
-                            </div>
-                            <div class="skill-name">Adobe Lightroom</div>
-                        </div>
-                        <div class="skill-level">
-                            <div class="level-bar">
-                                <div class="level-fill" style="width: 80%;"></div>
-                            </div>
-                            <div class="level-text">Advanced</div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-info">
-                            <div class="skill-icon" style="color: #ff3366;">
-                                <i class="fas fa-file-alt"></i>
-                            </div>
-                            <div class="skill-name">Adobe InDesign</div>
-                        </div>
-                        <div class="skill-level">
-                            <div class="level-bar">
-                                <div class="level-fill" style="width: 75%;"></div>
-                            </div>
-                            <div class="level-text">Intermediate</div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-info">
-                            <div class="skill-icon" style="color: #1769ff;">
-                                <i class="fab fa-figma"></i>
-                            </div>
-                            <div class="skill-name">Figma</div>
-                        </div>
-                        <div class="skill-level">
-                            <div class="level-bar">
-                                <div class="level-fill" style="width: 85%;"></div>
-                            </div>
-                            <div class="level-text">Advanced</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Soft Skills -->
-            <div class="skill-category" onclick="toggleCategory(this)">
-                <div class="category-header">
-                    <div class="category-title">
-                        <div class="category-icon">
-                            <i class="fas fa-user-friends"></i>
-                        </div>
-                        <div class="category-name">Soft Skills</div>
-                    </div>
-                    <div class="expand-icon">
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                </div>
-                <div class="skills-list">
-                    <div class="skill-item">
-                        <div class="skill-info">
-                            <div class="skill-icon" style="color: var(--success-color);">
-                                <i class="fas fa-users"></i>
-                            </div>
-                            <div class="skill-name">Team Collaboration</div>
-                        </div>
-                        <div class="skill-level">
-                            <div class="level-bar">
-                                <div class="level-fill" style="width: 95%;"></div>
-                            </div>
-                            <div class="level-text">Expert</div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-info">
-                            <div class="skill-icon" style="color: var(--warning-color);">
-                                <i class="fas fa-lightbulb"></i>
-                            </div>
-                            <div class="skill-name">Problem-Solving</div>
-                        </div>
-                        <div class="skill-level">
-                            <div class="level-bar">
-                                <div class="level-fill" style="width: 90%;"></div>
-                            </div>
-                            <div class="level-text">Expert</div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-info">
-                            <div class="skill-icon" style="color: var(--primary-color);">
-                                <i class="fas fa-comments"></i>
-                            </div>
-                            <div class="skill-name">Communication</div>
-                        </div>
-                        <div class="skill-level">
-                            <div class="level-bar">
-                                <div class="level-fill" style="width: 85%;"></div>
-                            </div>
-                            <div class="level-text">Advanced</div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-info">
-                            <div class="skill-icon" style="color: var(--accent-color);">
-                                <i class="fas fa-rocket"></i>
-                            </div>
-                            <div class="skill-name">Leadership</div>
-                        </div>
-                        <div class="skill-level">
-                            <div class="level-bar">
-                                <div class="level-fill" style="width: 80%;"></div>
-                            </div>
-                            <div class="level-text">Advanced</div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-info">
-                            <div class="skill-icon" style="color: #9c27b0;">
-                                <i class="fas fa-brain"></i>
-                            </div>
-                            <div class="skill-name">Creative Thinking</div>
-                        </div>
-                        <div class="skill-level">
-                            <div class="level-bar">
-                                <div class="level-fill" style="width: 88%;"></div>
-                            </div>
-                            <div class="level-text">Expert</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Floating Action Button -->
-    <a href="#" class="fab" title="Back to Top" onclick="scrollToTop()">
-        <i class="fas fa-arrow-up"></i>
-    </a>
-
-    <script>
-        // Toggle category function
-        function toggleCategory(element) {
-            element.classList.toggle('expanded');
-            
-            // Close other categories if needed (optional)
-            const categories = document.querySelectorAll('.skill-category');
-            categories.forEach(category => {
-                if (category !== element && category.classList.contains('expanded')) {
-                    // Optionally close other categories
-                    // category.classList.remove('expanded');
-                }
-            });
-        }
-
-        // Scroll to top function
-        function scrollToTop() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        }
-
-        // Add scroll effect to header
-        window.addEventListener('scroll', function() {
-            const header = document.querySelector('.header');
-            if (window.scrollY > 100) {
-                header.style.background = 'rgba(10, 10, 10, 0.98)';
-                header.style.boxShadow = '0 8px 32px rgba(0, 0, 0, 0.5)';
-            } else {
-                header.style.background = 'rgba(10, 10, 10, 0.95)';
-                header.style.boxShadow = '0 8px 32px rgba(0, 0, 0, 0.3)';
-            }
-        });
-
-        // Animate skill bars when they come into view
-        const observeSkills = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const skillBars = entry.target.querySelectorAll('.level-fill');
-                    skillBars.forEach(bar => {
-                        const width = bar.style.width;
-                        bar.style.width = '0%';
-                        setTimeout(() => {
-                            bar.style.width = width;
-                        }, 200);
-                    });
-                }
-            });
-        });
-
-        // Observe all skill categories
-        document.querySelectorAll('.skill-category').forEach(category => {
-            observeSkills.observe(category);
-        });
-
-        // Add keyboard navigation
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                // Close all expanded categories
-                document.querySelectorAll('.skill-category.expanded').forEach(category => {
-                    category.classList.remove('expanded');
-                });
-            }
-        });
-
-        // Add touch support for mobile
-        let touchStartY = 0;
-        document.addEventListener('touchstart', function(e) {
-            touchStartY = e.touches[0].clientY;
-        });
-
-        document.addEventListener('touchend', function(e) {
-            const touchEndY = e.changedTouches[0].clientY;
-            const diff = touchStartY - touchEndY;
-            
-            // If swiping up significantly, show fab
-            if (diff > 50) {
-                document.querySelector('.fab').style.opacity = '1';
-                document.querySelector('.fab').style.transform = 'scale(1)';
-            }
-        });
-
-        // Initialize page
-        document.addEventListener('DOMContentLoaded', function() {
-            // Add loading animation
-            document.body.style.opacity = '0';
-            setTimeout(() => {
-                document.body.style.transition = 'opacity 0.5s ease';
-                document.body.style.opacity = '1';
-            }, 100);
-        });
-    </script>
-</body>
-</html>-info">
-                            <div class="skill-icon" style="color: #e34c26;">
+                            <div class="skill-icon" style="color: #E34F26;">
                                 <i class="fab fa-html5"></i>
                             </div>
                             <div class="skill-name">HTML5</div>
                         </div>
-                        <div class="skill-level">
+                        <div class="skill-level level-expert">
                             <div class="level-bar">
-                                <div class="level-fill" style="width: 95%;"></div>
+                                <div class="level-progress" data-width="95"></div>
                             </div>
                             <div class="level-text">Expert</div>
                         </div>
                     </div>
                     <div class="skill-item">
                         <div class="skill-info">
-                            <div class="skill-icon" style="color: #1572b6;">
+                            <div class="skill-icon" style="color: #1572B6;">
                                 <i class="fab fa-css3-alt"></i>
                             </div>
                             <div class="skill-name">CSS3</div>
                         </div>
-                        <div class="skill-level">
+                        <div class="skill-level level-expert">
                             <div class="level-bar">
-                                <div class="level-fill" style="width: 90%;"></div>
+                                <div class="level-progress" data-width="90"></div>
                             </div>
                             <div class="level-text">Expert</div>
                         </div>
                     </div>
                     <div class="skill-item">
                         <div class="skill-info">
-                            <div class="skill-icon" style="color: #f7df1e;">
+                            <div class="skill-icon" style="color: #F7DF1E;">
                                 <i class="fab fa-js-square"></i>
                             </div>
                             <div class="skill-name">JavaScript</div>
                         </div>
-                        <div class="skill-level">
+                        <div class="skill-level level-advanced">
                             <div class="level-bar">
-                                <div class="level-fill" style="width: 85%;"></div>
+                                <div class="level-progress" data-width="85"></div>
                             </div>
                             <div class="level-text">Advanced</div>
                         </div>
                     </div>
                     <div class="skill-item">
                         <div class="skill-info">
-                            <div class="skill-icon" style="color: #61dafb;">
+                            <div class="skill-icon" style="color: #61DAFB;">
                                 <i class="fab fa-react"></i>
                             </div>
                             <div class="skill-name">React</div>
                         </div>
-                        <div class="skill-level">
+                        <div class="skill-level level-advanced">
                             <div class="level-bar">
-                                <div class="level-fill" style="width: 80%;"></div>
-                            </div>
-                            <div class="level-text">Advanced</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Backend Development -->
-            <div class="skill-category" onclick="toggleCategory(this)">
-                <div class="category-header">
-                    <div class="category-title">
-                        <div class="category-icon">
-                            <i class="fas fa-server"></i>
-                        </div>
-                        <div class="category-name">Backend Development</div>
-                    </div>
-                    <div class="expand-icon">
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                </div>
-                <div class="skills-list">
-                    <div class="skill-item">
-                        <div class="skill-info">
-                            <div class="skill-icon" style="color: #00599c;">
-                                <i class="fab fa-cuttlefish"></i>
-                            </div>
-                            <div class="skill-name">C++</div>
-                        </div>
-                        <div class="skill-level">
-                            <div class="level-bar">
-                                <div class="level-fill" style="width: 90%;"></div>
-                            </div>
-                            <div class="level-text">Expert</div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-info">
-                            <div class="skill-icon" style="color: #ed8b00;">
-                                <i class="fab fa-java"></i>
-                            </div>
-                            <div class="skill-name">Java</div>
-                        </div>
-                        <div class="skill-level">
-                            <div class="level-bar">
-                                <div class="level-fill" style="width: 85%;"></div>
+                                <div class="level-progress" data-width="80"></div>
                             </div>
                             <div class="level-text">Advanced</div>
                         </div>
                     </div>
                     <div class="skill-item">
                         <div class="skill-info">
-                            <div class="skill-icon" style="color: #3776ab;">
-                                <i class="fab fa-python"></i>
-                            </div>
-                            <div class="skill-name">Python</div>
-                        </div>
-                        <div class="skill-level">
-                            <div class="level-bar">
-                                <div class="level-fill" style="width: 80%;"></div>
-                            </div>
-                            <div class="level-text">Advanced</div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-info">
-                            <div class="skill-icon" style="color: #68217a;">
+                            <div class="skill-icon" style="color: #68217A;">
                                 <i class="fab fa-microsoft"></i>
                             </div>
                             <div class="skill-name">C#</div>
                         </div>
-                        <div class="skill-level">
+                        <div class="skill-level level-intermediate">
                             <div class="level-bar">
-                                <div class="level-fill" style="width: 75%;"></div>
+                                <div class="level-progress" data-width="75"></div>
                             </div>
                             <div class="level-text">Intermediate</div>
                         </div>
@@ -1172,9 +846,9 @@
                             </div>
                             <div class="skill-name">Node.js</div>
                         </div>
-                        <div class="skill-level">
+                        <div class="skill-level level-intermediate">
                             <div class="level-bar">
-                                <div class="level-fill" style="width: 70%;"></div>
+                                <div class="level-progress" data-width="70"></div>
                             </div>
                             <div class="level-text">Intermediate</div>
                         </div>
@@ -1183,32 +857,528 @@
             </div>
 
             <!-- Mobile Development -->
-            <div class="skill-category" onclick="toggleCategory(this)">
+            <div class="skill-category fade-in-up" onclick="toggleCategory(this)">
                 <div class="category-header">
-                    <div class="category-title">
+                    <div class="category-info">
                         <div class="category-icon">
                             <i class="fas fa-mobile-alt"></i>
                         </div>
-                        <div class="category-name">Mobile Development</div>
+                        <div class="category-details">
+                            <h3>Mobile Development</h3>
+                            <span class="category-count">3 Technologies</span>
+                        </div>
                     </div>
-                    <div class="expand-icon">
+                    <button class="expand-btn">
                         <i class="fas fa-chevron-down"></i>
-                    </div>
+                    </button>
                 </div>
                 <div class="skills-list">
                     <div class="skill-item">
                         <div class="skill-info">
-                            <div class="skill-icon" style="color: #3ddc84;">
+                            <div class="skill-icon" style="color: #3DDC84;">
                                 <i class="fab fa-android"></i>
                             </div>
                             <div class="skill-name">Android Studio</div>
                         </div>
-                        <div class="skill-level">
+                        <div class="skill-level level-advanced">
                             <div class="level-bar">
-                                <div class="level-fill" style="width: 85%;"></div>
+                                <div class="level-progress" data-width="85"></div>
                             </div>
                             <div class="level-text">Advanced</div>
                         </div>
                     </div>
                     <div class="skill-item">
-                        <div class="skill
+                        <div class="skill-info">
+                            <div class="skill-icon" style="color: #02569B;">
+                                <i class="fas fa-mobile"></i>
+                            </div>
+                            <div class="skill-name">Flutter</div>
+                        </div>
+                        <div class="skill-level level-intermediate">
+                            <div class="level-bar">
+                                <div class="level-progress" data-width="75"></div>
+                            </div>
+                            <div class="level-text">Intermediate</div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <div class="skill-icon" style="color: #007ACC;">
+                                <i class="fab fa-swift"></i>
+                            </div>
+                            <div class="skill-name">iOS Development</div>
+                        </div>
+                        <div class="skill-level level-intermediate">
+                            <div class="level-bar">
+                                <div class="level-progress" data-width="65"></div>
+                            </div>
+                            <div class="level-text">Intermediate</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Database & Cloud -->
+            <div class="skill-category fade-in-up" onclick="toggleCategory(this)">
+                <div class="category-header">
+                    <div class="category-info">
+                        <div class="category-icon">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <div class="category-details">
+                            <h3>Database & Cloud</h3>
+                            <span class="category-count">3 Technologies</span>
+                        </div>
+                    </div>
+                    <button class="expand-btn">
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                </div>
+                <div class="skills-list">
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <div class="skill-icon" style="color: #336791;">
+                                <i class="fas fa-database"></i>
+                            </div>
+                            <div class="skill-name">MySQL</div>
+                        </div>
+                        <div class="skill-level level-advanced">
+                            <div class="level-bar">
+                                <div class="level-progress" data-width="80"></div>
+                            </div>
+                            <div class="level-text">Advanced</div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <div class="skill-icon" style="color: #47A248;">
+                                <i class="fas fa-leaf"></i>
+                            </div>
+                            <div class="skill-name">MongoDB</div>
+                        </div>
+                        <div class="skill-level level-intermediate">
+                            <div class="level-bar">
+                                <div class="level-progress" data-width="70"></div>
+                            </div>
+                            <div class="level-text">Intermediate</div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <div class="skill-icon" style="color: #FF9900;">
+                                <i class="fab fa-aws"></i>
+                            </div>
+                            <div class="skill-name">AWS</div>
+                        </div>
+                        <div class="skill-level level-intermediate">
+                            <div class="level-bar">
+                                <div class="level-progress" data-width="65"></div>
+                            </div>
+                            <div class="level-text">Intermediate</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Graphic Design -->
+            <div class="skill-category fade-in-up" onclick="toggleCategory(this)">
+                <div class="category-header">
+                    <div class="category-info">
+                        <div class="category-icon">
+                            <i class="fas fa-palette"></i>
+                        </div>
+                        <div class="category-details">
+                            <h3>Graphic Design</h3>
+                            <span class="category-count">5 Technologies</span>
+                        </div>
+                    </div>
+                    <button class="expand-btn">
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                </div>
+                <div class="skills-list">
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <div class="skill-icon" style="color: #31A8FF;">
+                                <i class="fas fa-layer-group"></i>
+                            </div>
+                            <div class="skill-name">Adobe Photoshop</div>
+                        </div>
+                        <div class="skill-level level-expert">
+                            <div class="level-bar">
+                                <div class="level-progress" data-width="90"></div>
+                            </div>
+                            <div class="level-text">Expert</div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <div class="skill-icon" style="color: #FF9A00;">
+                                <i class="fas fa-bezier-curve"></i>
+                            </div>
+                            <div class="skill-name">Adobe Illustrator</div>
+                        </div>
+                        <div class="skill-level level-advanced">
+                            <div class="level-bar">
+                                <div class="level-progress" data-width="85"></div>
+                            </div>
+                            <div class="level-text">Advanced</div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <div class="skill-icon" style="color: #31A8FF;">
+                                <i class="fas fa-camera"></i>
+                            </div>
+                            <div class="skill-name">Adobe Lightroom</div>
+                        </div>
+                        <div class="skill-level level-advanced">
+                            <div class="level-bar">
+                                <div class="level-progress" data-width="80"></div>
+                            </div>
+                            <div class="level-text">Advanced</div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <div class="skill-icon" style="color: #FF3366;">
+                                <i class="fas fa-file-alt"></i>
+                            </div>
+                            <div class="skill-name">Adobe InDesign</div>
+                        </div>
+                        <div class="skill-level level-intermediate">
+                            <div class="level-bar">
+                                <div class="level-progress" data-width="75"></div>
+                            </div>
+                            <div class="level-text">Intermediate</div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <div class="skill-icon" style="color: #1769FF;">
+                                <i class="fab fa-figma"></i>
+                            </div>
+                            <div class="skill-name">Figma</div>
+                        </div>
+                        <div class="skill-level level-advanced">
+                            <div class="level-bar">
+                                <div class="level-progress" data-width="85"></div>
+                            </div>
+                            <div class="level-text">Advanced</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Soft Skills -->
+            <div class="skill-category fade-in-up" onclick="toggleCategory(this)">
+                <div class="category-header">
+                    <div class="category-info">
+                        <div class="category-icon">
+                            <i class="fas fa-user-friends"></i>
+                        </div>
+                        <div class="category-details">
+                            <h3>Soft Skills</h3>
+                            <span class="category-count">5 Competencies</span>
+                        </div>
+                    </div>
+                    <button class="expand-btn">
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                </div>
+                <div class="skills-list">
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <div class="skill-icon" style="color: var(--success);">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="skill-name">Team Collaboration</div>
+                        </div>
+                        <div class="skill-level level-expert">
+                            <div class="level-bar">
+                                <div class="level-progress" data-width="95"></div>
+                            </div>
+                            <div class="level-text">Expert</div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <div class="skill-icon" style="color: var(--warning);">
+                                <i class="fas fa-lightbulb"></i>
+                            </div>
+                            <div class="skill-name">Problem Solving</div>
+                        </div>
+                        <div class="skill-level level-expert">
+                            <div class="level-bar">
+                                <div class="level-progress" data-width="90"></div>
+                            </div>
+                            <div class="level-text">Expert</div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <div class="skill-icon" style="color: var(--primary);">
+                                <i class="fas fa-comments"></i>
+                            </div>
+                            <div class="skill-name">Communication</div>
+                        </div>
+                        <div class="skill-level level-advanced">
+                            <div class="level-bar">
+                                <div class="level-progress" data-width="85"></div>
+                            </div>
+                            <div class="level-text">Advanced</div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <div class="skill-icon" style="color: var(--accent);">
+                                <i class="fas fa-rocket"></i>
+                            </div>
+                            <div class="skill-name">Leadership</div>
+                        </div>
+                        <div class="skill-level level-advanced">
+                            <div class="level-bar">
+                                <div class="level-progress" data-width="80"></div>
+                            </div>
+                            <div class="level-text">Advanced</div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <div class="skill-icon" style="color: #9C27B0;">
+                                <i class="fas fa-brain"></i>
+                            </div>
+                            <div class="skill-name">Creative Thinking</div>
+                        </div>
+                        <div class="skill-level level-expert">
+                            <div class="level-bar">
+                                <div class="level-progress" data-width="88"></div>
+                            </div>
+                            <div class="level-text">Expert</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Stats -->
+        <div class="quick-stats">
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-trophy"></i>
+                </div>
+                <div class="stat-value">Expert</div>
+                <div class="stat-description">Level Skills: 8</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-star"></i>
+                </div>
+                <div class="stat-value">Advanced</div>
+                <div class="stat-description">Level Skills: 9</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <div class="stat-value">Intermediate</div>
+                <div class="stat-description">Level Skills: 8</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Floating Action Button -->
+    <button class="fab" onclick="scrollToTop()" title="Back to Top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Toggle category expansion
+        function toggleCategory(element) {
+            const isExpanded = element.classList.contains('expanded');
+            
+            // Close all other categories
+            document.querySelectorAll('.skill-category.expanded').forEach(category => {
+                if (category !== element) {
+                    category.classList.remove('expanded');
+                }
+            });
+            
+            // Toggle current category
+            element.classList.toggle('expanded');
+            
+            // Animate skill bars if expanding
+            if (!isExpanded) {
+                setTimeout(() => {
+                    const progressBars = element.querySelectorAll('.level-progress');
+                    progressBars.forEach(bar => {
+                        const width = bar.getAttribute('data-width');
+                        bar.style.width = width + '%';
+                    });
+                }, 300);
+            }
+        }
+
+        // Smooth scroll to top
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Header scroll effect
+        let lastScrollTop = 0;
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.header');
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (scrollTop > 100) {
+                header.style.background = 'rgba(10, 10, 15, 0.98)';
+                header.style.backdropFilter = 'blur(25px) saturate(2)';
+            } else {
+                header.style.background = 'rgba(10, 10, 15, 0.95)';
+                header.style.backdropFilter = 'blur(20px) saturate(1.8)';
+            }
+            
+            lastScrollTop = scrollTop;
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all skill categories
+        document.querySelectorAll('.skill-category').forEach(category => {
+            observer.observe(category);
+        });
+
+        // Initialize skill bars
+        document.addEventListener('DOMContentLoaded', () => {
+            // Reset all progress bars
+            document.querySelectorAll('.level-progress').forEach(bar => {
+                bar.style.width = '0%';
+            });
+            
+            // Add smooth loading animation
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                document.querySelectorAll('.skill-category.expanded').forEach(category => {
+                    category.classList.remove('expanded');
+                });
+            }
+        });
+
+        // Touch gesture support
+        let touchStartY = 0;
+        let touchStartX = 0;
+
+        document.addEventListener('touchstart', (e) => {
+            touchStartY = e.touches[0].clientY;
+            touchStartX = e.touches[0].clientX;
+        });
+
+        document.addEventListener('touchend', (e) => {
+            const touchEndY = e.changedTouches[0].clientY;
+            const touchEndX = e.changedTouches[0].clientX;
+            
+            const deltaY = touchStartY - touchEndY;
+            const deltaX = Math.abs(touchStartX - touchEndX);
+            
+            // Swipe up gesture to show FAB
+            if (deltaY > 50 && deltaX < 100) {
+                const fab = document.querySelector('.fab');
+                fab.style.opacity = '1';
+                fab.style.transform = 'scale(1)';
+            }
+        });
+
+        // Performance optimization: Debounce scroll events
+        function debounce(func, wait) {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        }
+
+        // Apply debouncing to scroll handler
+        window.addEventListener('scroll', debounce(() => {
+            // Scroll-based animations can go here
+        }, 16)); // 60fps
+    </script>
+</body>
+</html>
+
+            <!-- Backend Development -->
+            <div class="skill-category fade-in-up" onclick="toggleCategory(this)">
+                <div class="category-header">
+                    <div class="category-info">
+                        <div class="category-icon">
+                            <i class="fas fa-server"></i>
+                        </div>
+                        <div class="category-details">
+                            <h3>Backend Development</h3>
+                            <span class="category-count">5 Technologies</span>
+                        </div>
+                    </div>
+                    <button class="expand-btn">
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                </div>
+                <div class="skills-list">
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <div class="skill-icon" style="color: #00599C;">
+                                <i class="fab fa-cuttlefish"></i>
+                            </div>
+                            <div class="skill-name">C++</div>
+                        </div>
+                        <div class="skill-level level-expert">
+                            <div class="level-bar">
+                                <div class="level-progress" data-width="90"></div>
+                            </div>
+                            <div class="level-text">Expert</div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <div class="skill-icon" style="color: #ED8B00;">
+                                <i class="fab fa-java"></i>
+                            </div>
+                            <div class="skill-name">Java</div>
+                        </div>
+                        <div class="skill-level level-advanced">
+                            <div class="level-bar">
+                                <div class="level-progress" data-width="85"></div>
+                            </div>
+                            <div class="level-text">Advanced</div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <div class="skill-icon" style="color: #3776AB;">
+                                <i class="fab fa-python"></i>
+                            </div>
+                            <div class="skill-name">Python</div>
+                
