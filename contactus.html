@@ -149,6 +149,7 @@
             transform: scale(1.05);
         }
 
+        /* Desktop nav */
         .nav-menu {
             display: flex;
             list-style: none;
@@ -176,6 +177,28 @@
             background: rgba(0, 212, 255, 0.1);
             transform: translateY(-2px);
         }
+
+        /* Hamburger */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+            padding: 4px;
+        }
+
+        .menu-toggle span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background: var(--text-primary);
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        .menu-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 6px); }
+        .menu-toggle.active span:nth-child(2) { opacity: 0; }
+        .menu-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -6px); }
 
         /* Main Content */
         .main-content {
@@ -503,12 +526,59 @@
             to { opacity: 1; transform: translate(-50%, -50%); }
         }
 
-        /* Mobile Responsive */
+        /* Animations */
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .contact-form { animation-delay: 0.1s; }
+        .contact-info { animation-delay: 0.2s; }
+        .faq-section { animation-delay: 0.3s; }
+
+        /* ===== RESPONSIVE ===== */
         @media (max-width: 768px) {
-            .nav-menu { 
-                display: none; 
+            .menu-toggle { display: flex; }
+
+            .nav-menu {
+                position: fixed;
+                top: 73px;
+                right: -100%;
+                width: 280px;
+                height: calc(100vh - 73px);
+                background: rgba(10, 10, 15, 0.98);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                gap: 0;
+                padding: 1.5rem 1rem;
+                border-radius: 0;
+                border: none;
+                border-left: 1px solid var(--border-light);
+                transition: right 0.3s ease;
             }
-            
+
+            .nav-menu.open {
+                right: 0;
+            }
+
+            .nav-link {
+                display: block;
+                padding: 0.9rem 1rem;
+                border-bottom: 1px solid var(--border-light);
+                border-radius: 0;
+                font-size: 1rem;
+                transform: none;
+            }
+
+            .nav-link:hover, .nav-link.active {
+                transform: none;
+            }
+
             .main-content {
                 padding: 40px 1rem;
             }
@@ -526,27 +596,6 @@
                 grid-template-columns: 1fr;
             }
         }
-
-        /* Animations */
-        .fade-in-up {
-            animation: fadeInUp 0.8s ease-out forwards;
-            opacity: 0;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .contact-form { animation-delay: 0.1s; }
-        .contact-info { animation-delay: 0.2s; }
-        .faq-section { animation-delay: 0.3s; }
     </style>
 </head>
 <body>
@@ -558,16 +607,21 @@
     </div>
 
     <!-- Header -->
-    <header class="header">
+    <header class="header" id="header">
         <nav class="nav">
             <a href="index.html" class="logo">Theekshana</a>
-            <ul class="nav-menu">
+            <ul class="nav-menu" id="nav-menu">
                 <li><a href="index.html" class="nav-link">Home</a></li>
                 <li><a href="about.html" class="nav-link">About</a></li>
                 <li><a href="Services.html" class="nav-link">Skills</a></li>
                 <li><a href="Portforlio.html" class="nav-link">Portfolio</a></li>
-                <li><a href="contact.html" class="nav-link active">Contact</a></li>
+                <li><a href="contactus.html" class="nav-link active">Contact</a></li>
             </ul>
+            <div class="menu-toggle" id="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </nav>
     </header>
 
@@ -637,7 +691,7 @@
                     </div>
                     <div class="info-content">
                         <h3>Phone</h3>
-                        <p><a href="tel:+4 701112975">+94 701112975</a></p>
+                        <p><a href="tel:+94701112975">+94 701112975</a></p>
                         <p>Available Mon-Fri, 8AM-5PM</p>
                     </div>
                 </div>
@@ -740,38 +794,35 @@
     </div>
 
     <script>
-        // FAQ Toggle Function
-        function toggleFaq(element) {
-            const isActive = element.classList.contains('active');
-            
-            // Close all FAQ items
-            document.querySelectorAll('.faq-item.active').forEach(item => {
-                item.classList.remove('active');
-            });
-            
-            // Toggle current item
-            if (!isActive) {
-                element.classList.add('active');
-            }
-        }
+        // ── Hamburger menu ──────────────────────────────────────────
+        const menuToggle = document.getElementById('menu-toggle');
+        const navMenu    = document.getElementById('nav-menu');
 
-        // Form Submission Handler
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            // Show success message
-            const successMessage = document.getElementById('successMessage');
-            successMessage.style.display = 'block';
-            
-            // Hide success message after 3 seconds
-            setTimeout(() => {
-                successMessage.style.display = 'none';
-            }, 3000);
+        menuToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            menuToggle.classList.toggle('active');
+            navMenu.classList.toggle('open');
         });
 
-        // Header Scroll Effect
+        document.addEventListener('click', (e) => {
+            if (!menuToggle.contains(e.target) && !navMenu.contains(e.target)) {
+                menuToggle.classList.remove('active');
+                navMenu.classList.remove('open');
+            }
+        });
+
+        // Close menu on nav link click (mobile)
+        navMenu.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                navMenu.classList.remove('open');
+            });
+        });
+
+        // ── Header scroll effect ─────────────────────────────────────
         window.addEventListener('scroll', () => {
-            const header = document.querySelector('.header');
+            const header = document.getElementById('header');
             const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            
             if (scrollTop > 100) {
                 header.style.background = 'rgba(10, 10, 15, 0.98)';
                 header.style.backdropFilter = 'blur(25px) saturate(2)';
@@ -781,31 +832,44 @@
             }
         });
 
-        // Intersection Observer for Animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
+        // ── FAQ Toggle ───────────────────────────────────────────────
+        function toggleFaq(element) {
+            const isActive = element.classList.contains('active');
+            document.querySelectorAll('.faq-item.active').forEach(item => {
+                item.classList.remove('active');
+            });
+            if (!isActive) {
+                element.classList.add('active');
+            }
+        }
 
+        // ── Form Submission ──────────────────────────────────────────
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            const successMessage = document.getElementById('successMessage');
+            successMessage.style.display = 'block';
+            setTimeout(() => {
+                successMessage.style.display = 'none';
+            }, 3000);
+        });
+
+        // ── Intersection Observer for Animations ─────────────────────
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.style.animationPlayState = 'running';
                 }
             });
-        }, observerOptions);
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
-        // Observe all animated elements
         document.querySelectorAll('.fade-in-up').forEach(element => {
             observer.observe(element);
         });
 
-        // Form Input Animation
+        // ── Form Input Animation ─────────────────────────────────────
         document.querySelectorAll('.form-input, .form-textarea').forEach(input => {
             input.addEventListener('focus', function() {
                 this.parentNode.classList.add('focused');
             });
-            
             input.addEventListener('blur', function() {
                 if (!this.value) {
                     this.parentNode.classList.remove('focused');
@@ -813,14 +877,13 @@
             });
         });
 
-        // Initialize
-        document.addEventListener('DOMContentLoaded', () => {
-            // Add loading animation
-            setTimeout(() => {
-                document.body.style.opacity = '1';
-            }, 100);
+        // ── Keyboard: Esc closes menu ────────────────────────────────
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                menuToggle.classList.remove('active');
+                navMenu.classList.remove('open');
+            }
         });
     </script>
 </body>
 </html>
-
