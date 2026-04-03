@@ -149,6 +149,7 @@
             transform: scale(1.05);
         }
 
+        /* Desktop nav */
         .nav-menu {
             display: flex;
             list-style: none;
@@ -176,6 +177,28 @@
             background: rgba(0, 212, 255, 0.1);
             transform: translateY(-2px);
         }
+
+        /* Hamburger */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+            padding: 4px;
+        }
+
+        .menu-toggle span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background: var(--text-primary);
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        .menu-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 6px); }
+        .menu-toggle.active span:nth-child(2) { opacity: 0; }
+        .menu-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -6px); }
 
         /* Hero Section */
         .hero {
@@ -570,10 +593,69 @@
             color: var(--text-secondary);
         }
 
-        /* Responsive Design */
+        /* Animation Classes */
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .project-card:nth-child(1) { animation-delay: 0.1s; }
+        .project-card:nth-child(2) { animation-delay: 0.2s; }
+        .project-card:nth-child(3) { animation-delay: 0.3s; }
+        .project-card:nth-child(4) { animation-delay: 0.4s; }
+        .project-card:nth-child(5) { animation-delay: 0.5s; }
+        .project-card:nth-child(6) { animation-delay: 0.6s; }
+        .project-card:nth-child(7) { animation-delay: 0.7s; }
+
+        /* ===== RESPONSIVE ===== */
         @media (max-width: 768px) {
-            .nav-menu { display: none; }
-            
+            .menu-toggle { display: flex; }
+
+            .nav-menu {
+                position: fixed;
+                top: 73px;
+                right: -100%;
+                width: 280px;
+                height: calc(100vh - 73px);
+                background: rgba(10, 10, 15, 0.98);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                gap: 0;
+                padding: 1.5rem 1rem;
+                border-radius: 0;
+                border: none;
+                border-left: 1px solid var(--border-light);
+                transition: right 0.3s ease;
+            }
+
+            .nav-menu.open {
+                right: 0;
+            }
+
+            .nav-link {
+                display: block;
+                padding: 0.9rem 1rem;
+                border-bottom: 1px solid var(--border-light);
+                border-radius: 0;
+                font-size: 1rem;
+                transform: none;
+            }
+
+            .nav-link:hover, .nav-link.active {
+                transform: none;
+            }
+
             .hero {
                 padding: 60px 1rem;
             }
@@ -623,31 +705,6 @@
                 height: 250px;
             }
         }
-
-        /* Animation Classes */
-        .fade-in-up {
-            animation: fadeInUp 0.8s ease-out forwards;
-            opacity: 0;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .project-card:nth-child(1) { animation-delay: 0.1s; }
-        .project-card:nth-child(2) { animation-delay: 0.2s; }
-        .project-card:nth-child(3) { animation-delay: 0.3s; }
-        .project-card:nth-child(4) { animation-delay: 0.4s; }
-        .project-card:nth-child(5) { animation-delay: 0.5s; }
-        .project-card:nth-child(6) { animation-delay: 0.6s; }
-        .project-card:nth-child(7) { animation-delay: 0.7s; }
     </style>
 </head>
 <body>
@@ -659,16 +716,21 @@
     </div>
 
     <!-- Header -->
-    <header class="header">
+    <header class="header" id="header">
         <nav class="nav">
             <a href="index.html" class="logo">Theekshana</a>
-            <ul class="nav-menu">
+            <ul class="nav-menu" id="nav-menu">
                 <li><a href="index.html" class="nav-link">Home</a></li>
                 <li><a href="about.html" class="nav-link">About</a></li>
                 <li><a href="Services.html" class="nav-link">Skills</a></li>
                 <li><a href="Portforlio.html" class="nav-link active">Portfolio</a></li>
                 <li><a href="contactus.html" class="nav-link">Contact</a></li>
             </ul>
+            <div class="menu-toggle" id="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </nav>
     </header>
 
@@ -1075,15 +1137,51 @@
     </footer>
 
     <script>
+        // ── Hamburger menu ──────────────────────────────────────────
+        const menuToggle = document.getElementById('menu-toggle');
+        const navMenu    = document.getElementById('nav-menu');
+
+        menuToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            menuToggle.classList.toggle('active');
+            navMenu.classList.toggle('open');
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!menuToggle.contains(e.target) && !navMenu.contains(e.target)) {
+                menuToggle.classList.remove('active');
+                navMenu.classList.remove('open');
+            }
+        });
+
+        // Close menu on nav link click (mobile)
+        navMenu.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                navMenu.classList.remove('open');
+            });
+        });
+
+        // ── Header scroll effect ─────────────────────────────────────
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            if (scrollTop > 100) {
+                header.style.background = 'rgba(10, 10, 15, 0.98)';
+                header.style.backdropFilter = 'blur(25px) saturate(2)';
+            } else {
+                header.style.background = 'rgba(10, 10, 15, 0.95)';
+                header.style.backdropFilter = 'blur(20px) saturate(1.8)';
+            }
+        });
+
         // Filter functionality
         const filterButtons = document.querySelectorAll('.filter-btn');
         const projectCards = document.querySelectorAll('.project-card');
 
         filterButtons.forEach(button => {
             button.addEventListener('click', () => {
-                // Remove active class from all buttons
                 filterButtons.forEach(btn => btn.classList.remove('active'));
-                // Add active class to clicked button
                 button.classList.add('active');
 
                 const filterValue = button.getAttribute('data-filter');
@@ -1113,15 +1211,10 @@
         function closeModal(modal) {
             modal.classList.remove('active');
             document.body.style.overflow = 'auto';
-            
-            // Pause video if it's playing
             const video = modal.querySelector('video');
-            if (video) {
-                video.pause();
-            }
+            if (video) { video.pause(); }
         }
 
-        // Close modal event listeners
         document.querySelectorAll('.close-modal').forEach(button => {
             button.addEventListener('click', (e) => {
                 const modal = e.target.closest('.modal');
@@ -1129,86 +1222,31 @@
             });
         });
 
-        // Close modal when clicking outside
         document.querySelectorAll('.modal').forEach(modal => {
             modal.addEventListener('click', (e) => {
-                if (e.target === modal) {
-                    closeModal(modal);
-                }
+                if (e.target === modal) { closeModal(modal); }
             });
         });
 
-        // Close modal with ESC key
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
                 const activeModal = document.querySelector('.modal.active');
-                if (activeModal) {
-                    closeModal(activeModal);
-                }
+                if (activeModal) { closeModal(activeModal); }
+                menuToggle.classList.remove('active');
+                navMenu.classList.remove('open');
             }
-        });
-
-        // Header scroll effect
-        let lastScrollTop = 0;
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('.header');
-            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            
-            if (scrollTop > 100) {
-                header.style.background = 'rgba(10, 10, 15, 0.98)';
-                header.style.backdropFilter = 'blur(25px) saturate(2)';
-            } else {
-                header.style.background = 'rgba(10, 10, 15, 0.95)';
-                header.style.backdropFilter = 'blur(20px) saturate(1.8)';
-            }
-            
-            lastScrollTop = scrollTop;
         });
 
         // Intersection Observer for animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.style.animationPlayState = 'running';
                 }
             });
-        }, observerOptions);
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
-        // Observe all project cards
-        document.querySelectorAll('.project-card').forEach(card => {
-            observer.observe(card);
-        });
-
-        // Initialize animations
-        document.addEventListener('DOMContentLoaded', () => {
-            // Add smooth loading animation
-            setTimeout(() => {
-                document.body.style.opacity = '1';
-            }, 100);
-        });
-
-        // Performance optimization: Debounce scroll events
-        function debounce(func, wait) {
-            let timeout;
-            return function executedFunction(...args) {
-                const later = () => {
-                    clearTimeout(timeout);
-                    func(...args);
-                };
-                clearTimeout(timeout);
-                timeout = setTimeout(later, wait);
-            };
-        }
-
-        // Apply debouncing to scroll handler
-        window.addEventListener('scroll', debounce(() => {
-            // Additional scroll-based animations can go here
-        }, 16)); // 60fps
+        document.querySelectorAll('.project-card').forEach(card => { observer.observe(card); });
 
         // Touch gesture support for mobile
         let touchStartY = 0;
@@ -1222,44 +1260,20 @@
         document.addEventListener('touchend', (e) => {
             const touchEndY = e.changedTouches[0].clientY;
             const touchEndX = e.changedTouches[0].clientX;
-            
             const deltaY = touchStartY - touchEndY;
             const deltaX = Math.abs(touchStartX - touchEndX);
-            
-            // Swipe gestures for navigation
+
             if (deltaX > 100 && Math.abs(deltaY) < 50) {
                 if (touchStartX > touchEndX) {
-                    // Swipe left - next filter
                     const activeButton = document.querySelector('.filter-btn.active');
                     const nextButton = activeButton.nextElementSibling;
-                    if (nextButton && nextButton.classList.contains('filter-btn')) {
-                        nextButton.click();
-                    }
+                    if (nextButton && nextButton.classList.contains('filter-btn')) { nextButton.click(); }
                 } else {
-                    // Swipe right - previous filter
                     const activeButton = document.querySelector('.filter-btn.active');
                     const prevButton = activeButton.previousElementSibling;
-                    if (prevButton && prevButton.classList.contains('filter-btn')) {
-                        prevButton.click();
-                    }
+                    if (prevButton && prevButton.classList.contains('filter-btn')) { prevButton.click(); }
                 }
             }
-        });
-
-        // Lazy loading for project images
-        const imageObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const img = entry.target;
-                    img.src = img.dataset.src;
-                    img.classList.remove('lazy');
-                    imageObserver.unobserve(img);
-                }
-            });
-        });
-
-        document.querySelectorAll('img[data-src]').forEach(img => {
-            imageObserver.observe(img);
         });
     </script>
 </body>
